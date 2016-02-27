@@ -7,6 +7,9 @@ import android.view.View;
 
 /**
  * Created by Isaac on 2/23/2016.
+ *
+ * The WelcomeActivity gives the user the opportunity to either create an account or
+ * login.
  */
 public class WelcomeActivity extends AppCompatActivity {
 

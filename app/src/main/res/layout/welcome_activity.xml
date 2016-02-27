@@ -11,19 +11,19 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:onClick="goToLogin"
-        android:text="Login" />
+        android:text="@string/login" />
 
     <Button
         android:id="@+id/create_account_button"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="225dp"
         android:onClick="goToCreateAccount"
-        android:text="Create Account" />
+        android:text="@string/create_account" />
 </RelativeLayout>

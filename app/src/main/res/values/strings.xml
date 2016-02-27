@@ -1,3 +1,25 @@
 <resources>
+    <!--General-->
     <string name="app_name">Pless</string>
+    <string name="next_button">Next</string>
+    <string name="back_button">Back</string>
+    
+    <!--Welcome Activity-->
+    <string name="create_account">Create Account</string>
+    <string name="login">Login</string>
+    
+    <!--Login Activity-->
+    <string name="username">Enter Username</string>
+    <string name="password">Enter Password</string>
+    <!--Login is covered by Welcome Activity-->
+    <string name="forgot_password">Forgot Password</string>
+    
+    <!--Homepage Activity-->
+    <string name="create_study">Create Form</string>
+    <string name="conduct_study">Conduct Study</string>
+    <string name="export_template">Export Form</string>
+    <string name="analyze_study">Analyze Study</string>
+
+    <!--Template Creation-->
+    <string name="enter_name">Enter Name</string>
 </resources>

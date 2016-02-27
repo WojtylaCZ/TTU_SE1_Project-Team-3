@@ -7,6 +7,10 @@ import android.view.View;
 
 /**
  * Created by Isaac on 2/24/2016.
+ *
+ * This activity is for the Login Page, the user will have two options,
+ * - Login with their username and password
+ * - Recover their password
  */
 public class LoginActivity extends AppCompatActivity {
 
