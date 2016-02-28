@@ -1,8 +1,10 @@
 package com.ttu_se1_project_team_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 
 /**
  * Created by Isaac on 2/27/2016.
@@ -15,14 +17,33 @@ import android.view.View;
  * - Password (Optional) : Limit who can use the study.
  */
 public class TemplateDetailsActivity extends AppCompatActivity {
+    StudyTemplate studyTemplate;
+    EditText text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.template_details_activity);
+
+        text = (EditText) findViewById(R.id.enter_name);
+        studyTemplate = StudyTemplate.getInstance();
     }
 
     public void createPreStudyFields(View v) {
-        
+        String name = text.getText().toString();
+        if (name.matches("")) {
+            text.setError("Please enter a name");
+        } else {
+            Intent prestudy = new Intent(this, CreatePreStudyFieldsActivity.class);
+            studyTemplate.setName(text.getText().toString());
+
+            startActivity(prestudy);
+        }
+    }
+
+    public void goToHomepage(View v) {
+        Intent home = new Intent(this, HomepageActivity.class);
+        studyTemplate.clearTemplate();
+        startActivity(home);
     }
 }

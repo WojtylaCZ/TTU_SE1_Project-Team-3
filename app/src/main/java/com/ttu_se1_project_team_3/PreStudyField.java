@@ -6,7 +6,7 @@ package com.ttu_se1_project_team_3;
  * A PreStudyField is what is filled out before a study begins.
  */
 public class PreStudyField extends StudyItem {
-    public PreStudyField(String name, InputType inputType) {
+    public PreStudyField(String name, InputT inputType) {
         this.itemName = name;
         this.itemInput = inputType;
     }

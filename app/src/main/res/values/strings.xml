@@ -22,4 +22,5 @@
 
     <!--Template Creation-->
     <string name="enter_name">Enter Name</string>
+    <string name="create_prestudy_field">Create Pre-Study Field</string>
 </resources>

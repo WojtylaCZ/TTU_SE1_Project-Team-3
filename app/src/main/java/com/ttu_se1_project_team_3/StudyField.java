@@ -14,14 +14,14 @@ import java.util.ArrayList;
  */
 
 enum standardInputStyles {
-    NORMAL, RANDOMIZED
+    NORMAL, RANDOM
 }
 
 public class StudyField extends StudyItem {
     public standardInputStyles inputStyle;
     public ArrayList<String> standardInputs;
 
-    public StudyField(String name, InputType inputType) {
+    public StudyField(String name, InputT inputType) {
         this.itemName = name;
         this.itemInput = inputType;
         this.inputStyle = standardInputStyles.NORMAL;

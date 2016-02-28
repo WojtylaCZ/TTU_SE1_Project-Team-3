@@ -1,5 +1,6 @@
 package com.ttu_se1_project_team_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,7 +23,8 @@ public class HomepageActivity extends AppCompatActivity {
     }
 
     public void createStudy(View v) {
-
+        Intent makeStudy = new Intent(this, TemplateDetailsActivity.class);
+        startActivity(makeStudy);
     }
 
     public void conductStudy(View v) {

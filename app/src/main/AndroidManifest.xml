@@ -15,9 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".HomepageActivity"></activity>
+        <activity android:name=".WelcomeActivity">Welcome</activity>
+        <activity android:name=".LoginActivity">Login</activity>
+        <activity android:name=".HomepageActivity">Homepage</activity>
+        <activity android:name=".TemplateDetailsActivity">Template Details</activity>
+        <activity android:name=".CreatePreStudyFieldsActivity">Create Pre-Study Fields</activity>
     </application>
 
 </manifest>

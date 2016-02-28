@@ -14,7 +14,20 @@ public class StudyTemplate {
     ArrayList<PreStudyField> preSurveyFields;
     ArrayList<StudyField> surveyFields;
 
-    public StudyTemplate(String name) {
+    private static StudyTemplate instance = null;
+
+    private StudyTemplate() {
+        // Exists only to deal with instantiation.
+    }
+
+    public static StudyTemplate getInstance() {
+        if (instance == null) {
+            instance = new StudyTemplate();
+        }
+        return instance;
+    }
+
+    public void setName(String name) {
         this.studyName = name;
     }
 
@@ -24,5 +37,11 @@ public class StudyTemplate {
 
     public void addSurveyField(StudyField newField) {
         this.surveyFields.add(newField);
+    }
+
+    public void clearTemplate() {
+        studyName = null;
+        preSurveyFields = new ArrayList<>();
+        surveyFields = new ArrayList<>();
     }
 }
