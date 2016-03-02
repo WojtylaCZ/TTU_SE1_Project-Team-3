@@ -6,8 +6,4 @@
 /build
 /captures
 *.iml
-<<<<<<< HEAD
-.idea
-=======
 .idea/
->>>>>>> refs/remotes/origin/CreateStudy
