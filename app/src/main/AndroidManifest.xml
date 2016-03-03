@@ -10,29 +10,29 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".activities.WelcomeActivity">
             Welcome
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activities.LoginActivity">
             Login
         </activity>
-        <activity android:name=".HomepageActivity">
+        <activity android:name=".activities.HomepageActivity">
             Homepage
         </activity>
-        <activity android:name=".TemplateDetailsActivity">
+        <activity android:name=".activities.TemplateDetailsActivity">
             Template Details
         </activity>
-        <activity android:name=".CreatePreStudyFieldsActivity">
+        <activity android:name=".activities.CreatePreStudyFieldsActivity">
             Create Pre-Study Fields
         </activity>
-        <activity android:name=".ForgotPassword">
+        <activity android:name=".activities.ForgotPassword">
             Forgot password
         </activity>
     </application>

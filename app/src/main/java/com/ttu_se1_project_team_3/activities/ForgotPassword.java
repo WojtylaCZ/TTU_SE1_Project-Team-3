@@ -1,4 +1,4 @@
-package com.ttu_se1_project_team_3;
+package com.ttu_se1_project_team_3.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.ttu_se1_project_team_3.R;
 
 /**
  * Created by wojtyla on 3/2/16.
