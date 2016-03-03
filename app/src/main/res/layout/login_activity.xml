@@ -17,8 +17,8 @@
         android:layout_height="@dimen/text_input_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="225dp"
-        android:inputType="textPassword"
-        android:hint="@string/password" />
+        android:hint="@string/password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/login_button"
@@ -35,5 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="375dp"
+        android:clickable="true"
+        android:onClick="forgotPassword"
         android:text="@string/forgot_password" />
 </RelativeLayout>
