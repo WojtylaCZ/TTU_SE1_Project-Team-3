@@ -23,4 +23,9 @@
     <!--Template Creation-->
     <string name="enter_name">Enter Name</string>
     <string name="create_prestudy_field">Create Pre-Study Field</string>
+    <string-array name="input_types">
+        <item>Text</item>
+        <item>ToggleButtons</item>
+        <item>Checkboxes</item>
+    </string-array>
 </resources>

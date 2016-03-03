@@ -11,6 +11,7 @@
         android:layout_width="@dimen/large_button_width"
         android:layout_height="@dimen/large_button_height"
         android:layout_centerHorizontal="true"
+        android:onClick="addPreStudyField"
         android:text="@string/create_prestudy_field"
         android:layout_marginTop="100dp"/>
 
@@ -20,4 +21,35 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:hint="@string/enter_name"/>
+
+    <Spinner
+        android:layout_width="@dimen/text_input_width"
+        android:layout_height="@dimen/text_input_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="275dp"
+        android:id="@+id/type_spinner">
+    </Spinner>
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="@dimen/small_button_width"
+        android:layout_height="@dimen/small_button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="325dp"
+        android:onClick="createStudyFields"
+        android:text="@string/next_button"
+        />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="@dimen/small_button_width"
+        android:layout_height="@dimen/small_button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="325dp"
+        android:onClick="changeTemplateDetails"
+        android:text="@string/back_button"
+        />
 </RelativeLayout>
