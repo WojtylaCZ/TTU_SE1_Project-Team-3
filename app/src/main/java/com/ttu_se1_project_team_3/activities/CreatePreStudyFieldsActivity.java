@@ -1,7 +1,10 @@
-package com.ttu_se1_project_team_3;
+package com.ttu_se1_project_team_3.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.ttu_se1_project_team_3.R;
+import com.ttu_se1_project_team_3.model.StudyTemplate;
 
 /**
  * Created by Isaac on 2/27/2016.

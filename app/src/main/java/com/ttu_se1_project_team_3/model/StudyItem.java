@@ -1,4 +1,4 @@
-package com.ttu_se1_project_team_3;
+package com.ttu_se1_project_team_3.model;
 
 /**
  * Created by Isaac on 2/27/2016.
