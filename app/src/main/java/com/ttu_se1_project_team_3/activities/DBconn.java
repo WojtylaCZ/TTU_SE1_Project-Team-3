@@ -6,7 +6,7 @@ import com.firebase.client.Firebase;
  * Created by wojtyla on 3/3/16.
  * <p/>
  * <p/>
- * class conteins singleton to get DB connection
+ * this is a singleton which holds a DB connection
  */
 
 
