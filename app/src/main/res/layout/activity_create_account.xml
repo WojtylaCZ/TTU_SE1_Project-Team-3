@@ -9,6 +9,7 @@
     tools:context="com.ttu_se1_project_team_3.activities.CreateAccount">
 
     <TextView
+        android:layout_marginTop="25dp"
         android:id="@+id/text_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,16 +17,18 @@
         android:text="Email: " />
 
     <EditText
+
         android:id="@+id/input_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="temp@email" />
 
     <TextView
+        android:layout_marginTop="25dp"
         android:id="@+id/text_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+
         android:text="Password: " />
 
     <EditText
@@ -33,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         tools:text="temp@email" />
 
     <Button
