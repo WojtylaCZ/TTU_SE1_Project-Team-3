@@ -19,14 +19,14 @@ import com.ttu_se1_project_team_3.R;
  * - Login with their username and password
  * - Recover their password
  */
-public class LoginActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     Firebase db;
     EditText enter_email, enter_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity);
+        setContentView(R.layout.activity_login);
         enter_email = (EditText) findViewById(R.id.enter_user);
         enter_password = (EditText) findViewById(R.id.enter_password);
     }
@@ -42,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
                 System.out.println("User successfully authenticated with User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-                Toast.makeText(LoginActivity.this, "Success.", Toast.LENGTH_LONG).show();
-                Intent home = new Intent(LoginActivity.this, HomepageActivity.class);
+                Toast.makeText(Login.this, "Success.", Toast.LENGTH_LONG).show();
+                Intent home = new Intent(Login.this, Homepage.class);
                 startActivity(home);
 
             }
@@ -51,10 +51,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 System.err.println(firebaseError.toString());
-                Toast.makeText(LoginActivity.this, "Wrong email or password.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Wrong email or password.", Toast.LENGTH_LONG).show();
             }
         });
-
 
 
     }

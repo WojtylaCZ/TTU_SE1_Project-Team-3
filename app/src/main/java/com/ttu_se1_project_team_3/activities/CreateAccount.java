@@ -37,7 +37,7 @@ public class CreateAccount extends AppCompatActivity {
             public void onSuccess(Map<String, Object> result) {
                 System.out.println("Successfully created user account with uid: " + result.get("uid"));
                 Toast.makeText(CreateAccount.this, "Account created. You may login now.", Toast.LENGTH_LONG).show();
-                Intent welcome = new Intent(CreateAccount.this, WelcomeActivity.class);
+                Intent welcome = new Intent(CreateAccount.this, Welcome.class);
                 startActivity(welcome);
             }
 

@@ -19,14 +19,14 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
  * - Institution (Optional) : Used to limit where the study can be used.
  * - Password (Optional) : Limit who can use the study.
  */
-public class TemplateDetailsActivity extends AppCompatActivity {
+public class TemplateDetails extends AppCompatActivity {
     StudyTemplate studyTemplate;
     EditText text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.template_details_activity);
+        setContentView(R.layout.activity_template_details);
 
         text = (EditText) findViewById(R.id.enter_name);
         studyTemplate = StudyTemplate.getInstance();
@@ -37,7 +37,7 @@ public class TemplateDetailsActivity extends AppCompatActivity {
         if (name.matches("")) {
             text.setError("Please enter a name");
         } else {
-            Intent prestudy = new Intent(this, CreatePreStudyFieldsActivity.class);
+            Intent prestudy = new Intent(this, CreatePreStudyFields.class);
             studyTemplate.setName(text.getText().toString());
 
             startActivity(prestudy);
@@ -45,7 +45,7 @@ public class TemplateDetailsActivity extends AppCompatActivity {
     }
 
     public void goToHomepage(View v) {
-        Intent home = new Intent(this, HomepageActivity.class);
+        Intent home = new Intent(this, Homepage.class);
         studyTemplate.clearTemplate();
         startActivity(home);
     }

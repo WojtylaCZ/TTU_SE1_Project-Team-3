@@ -12,7 +12,7 @@ import com.ttu_se1_project_team_3.R;
  * The MainActivity is redirecting to the Welcome Activity, this is done to separate
  * the roles of each activity more precisely.
  */
-public class MainActivity extends AppCompatActivity {
+public class Main extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
 
-        Intent welcome = new Intent(this, WelcomeActivity.class);
+        Intent welcome = new Intent(this, Welcome.class);
         startActivity(welcome);
 
     }
 
     public void go_to_homepage(View v) {
-        Intent welcome = new Intent(this, WelcomeActivity.class);
+        Intent welcome = new Intent(this, Welcome.class);
         startActivity(welcome);
     }
 
