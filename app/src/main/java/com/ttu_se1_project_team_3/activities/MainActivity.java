@@ -3,6 +3,7 @@ package com.ttu_se1_project_team_3.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.ttu_se1_project_team_3.R;
 
@@ -19,5 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
         Intent welcome = new Intent(this, WelcomeActivity.class);
         startActivity(welcome);
+
     }
+
+    public void go_to_homepage(View v) {
+        Intent welcome = new Intent(this, WelcomeActivity.class);
+        startActivity(welcome);
+    }
+
+
 }
