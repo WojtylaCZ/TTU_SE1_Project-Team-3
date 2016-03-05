@@ -9,7 +9,7 @@
     tools:context="com.ttu_se1_project_team_3.activities.CreateAccount">
 
     <TextView
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="100dp"
         android:id="@+id/text_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,16 +17,13 @@
         android:text="Email: " />
 
     <EditText
-
-
-        
         android:id="@+id/input_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="temp@email" />
 
     <TextView
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/text_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,8 +37,24 @@
         android:ems="10"
         android:inputType="textPassword"
         tools:text="temp@email" />
+    <TextView
+        android:layout_marginTop="15dp"
+        android:id="@+id/conf_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Confirm Password: " />
+    <EditText
+        android:layout_marginTop = "5dp"
+        android:id="@+id/confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        tools:text="temp@email" />
 
     <Button
+        android:layout_marginTop = "25dp"
         android:id="@+id/submit_createAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
