@@ -16,16 +16,16 @@ import com.ttu_se1_project_team_3.R;
  * - Export a Study Template
  * - Analyze a Study
  */
-public class HomepageActivity extends AppCompatActivity {
+public class Homepage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homepage_activity);
+        setContentView(R.layout.activity_homepage);
     }
 
     public void createStudy(View v) {
-        Intent makeStudy = new Intent(this, TemplateDetailsActivity.class);
+        Intent makeStudy = new Intent(this, TemplateDetails.class);
         startActivity(makeStudy);
     }
 

@@ -13,20 +13,22 @@ import com.ttu_se1_project_team_3.R;
  * The WelcomeActivity gives the user the opportunity to either create an account or
  * login.
  */
-public class WelcomeActivity extends AppCompatActivity {
+public class Welcome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_activity);
+        setContentView(R.layout.activity_welcome);
     }
 
     public void goToLogin(View v) {
-        Intent login = new Intent(this, LoginActivity.class);
+        Intent login = new Intent(this, Login.class);
         startActivity(login);
     }
 
     public void goToCreateAccount(View v) {
+        Intent creteAccount = new Intent(this, CreateAccount.class);
+        startActivity(creteAccount);
 
     }
 }

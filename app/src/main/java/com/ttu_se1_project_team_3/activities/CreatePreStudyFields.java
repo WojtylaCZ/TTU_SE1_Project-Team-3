@@ -18,14 +18,14 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
  * This activity allows the user to create as many PreStudyFields as they wish
  * for their study.
  */
-public class CreatePreStudyFieldsActivity extends AppCompatActivity implements OnItemSelectedListener {
+public class CreatePreStudyFields extends AppCompatActivity {
     StudyTemplate studyTemplate;
     Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_prestudy_fields_activity);
+        setContentView(R.layout.activity_create_prestudy_fields);
         getStudyTemplate();
 
         spinner = (Spinner) findViewById(R.id.type_spinner);

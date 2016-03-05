@@ -1,6 +1,5 @@
 package com.ttu_se1_project_team_3.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +12,8 @@ import com.ttu_se1_project_team_3.R;
 
 /**
  * Created by wojtyla on 3/2/16.
+ *
+ * Allows the user to retrieve a forgotten password.
  */
 public class ForgotPassword extends AppCompatActivity {
     Firebase myFirebaseRef;
@@ -20,7 +21,7 @@ public class ForgotPassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.forgot_password_activity);
+        setContentView(R.layout.activity_forgot_password);
         Firebase.setAndroidContext(this);
 
     }
