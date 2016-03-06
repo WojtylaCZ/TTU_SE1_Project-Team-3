@@ -32,7 +32,17 @@ public class CreatePreStudyFields extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
         R.array.input_types, android.R.layout.simple_spinner_dropdown_item);
 
-        spinner.setOnItemSelectedListener(this);
+        spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         spinner.setAdapter(adapter);
     }
 
@@ -40,18 +50,8 @@ public class CreatePreStudyFields extends AppCompatActivity {
         this.studyTemplate = StudyTemplate.getInstance();
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
-
     public void changeTemplateDetails(View v) {
-        Intent details = new Intent(this, TemplateDetailsActivity.class);
+        Intent details = new Intent(this, TemplateDetails.class);
         startActivity(details);
     }
 

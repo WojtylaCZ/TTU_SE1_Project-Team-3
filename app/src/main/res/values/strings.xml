@@ -28,4 +28,7 @@
         <item>ToggleButtons</item>
         <item>Checkboxes</item>
     </string-array>
+
+    <!--Create Account-->
+    <string name="submit_createAccount">Create Account</string>
 </resources>
