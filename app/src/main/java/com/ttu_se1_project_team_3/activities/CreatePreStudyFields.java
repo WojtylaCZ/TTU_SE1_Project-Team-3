@@ -50,6 +50,12 @@ public class CreatePreStudyFields extends AppCompatActivity {
         this.studyTemplate = StudyTemplate.getInstance();
     }
 
+    /**
+     * Allows the user to go back and change details associated with the template being
+     * created.
+     *
+     * @param v
+     */
     public void changeTemplateDetails(View v) {
         Intent details = new Intent(this, TemplateDetails.class);
         startActivity(details);

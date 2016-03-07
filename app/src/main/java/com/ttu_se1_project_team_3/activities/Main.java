@@ -30,6 +30,4 @@ public class Main extends AppCompatActivity {
         Intent welcome = new Intent(this, Welcome.class);
         startActivity(welcome);
     }
-
-
 }

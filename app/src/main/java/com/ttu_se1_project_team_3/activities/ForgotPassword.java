@@ -23,12 +23,9 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
         Firebase.setAndroidContext(this);
-
     }
 
     public void dbConnection(View v) {
-        System.out.println("WORKS");
-//        myFirebaseRef= new Firebase("https://popping-torch-9942.firebaseio.com/");
         myFirebaseRef= new Firebase("https://pless.firebaseio.com/");
         myFirebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
 

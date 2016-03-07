@@ -29,6 +29,5 @@ public class Welcome extends AppCompatActivity {
     public void goToCreateAccount(View v) {
         Intent creteAccount = new Intent(this, CreateAccount.class);
         startActivity(creteAccount);
-
     }
 }

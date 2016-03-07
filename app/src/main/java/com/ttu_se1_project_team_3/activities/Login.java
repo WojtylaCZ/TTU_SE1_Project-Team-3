@@ -37,7 +37,6 @@ public class Login extends AppCompatActivity {
         String email = enter_email.getText().toString();
         String password = enter_password.getText().toString();
 
-
         db.authWithPassword(email, password, new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {

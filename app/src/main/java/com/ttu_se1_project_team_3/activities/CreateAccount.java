@@ -13,6 +13,10 @@ import com.ttu_se1_project_team_3.R;
 
 import java.util.Map;
 
+/**
+ * This class manages the page that allows the user to create a new account given an email
+ * and matching passwords.
+ */
 public class CreateAccount extends AppCompatActivity {
     EditText input_email, input_password, confirm_password;
     Firebase db;
@@ -28,16 +32,18 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
-
-
+    /**
+     * This function is called when the user clicks "Create Account",
+     * it allows the user to create an account.
+     *
+     * @param view
+     */
     public void createNewAccount(View view) {
 
         String email = input_email.getText().toString();
         String password = input_password.getText().toString();
 
         if(input_password.getText().toString().trim().matches(confirm_password.getText().toString().trim())) {
-
-
             db = DBconn.getInstance().getFbConnection();
 
             db.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
@@ -55,11 +61,8 @@ public class CreateAccount extends AppCompatActivity {
                     System.err.println(firebaseError.toString());
                 }
             });
-
         }else{
             Toast.makeText(CreateAccount.this, "ERROR: Passwords do not match.", Toast.LENGTH_LONG).show();
         }
-
-
     }
 }
