@@ -7,9 +7,11 @@ package com.ttu_se1_project_team_3.model;
  */
 public class SessionLogField extends FormItem {
 
-    public SessionLogField(InputT inputType,String name,String value) {
+    public SessionLogField() {
+    }
+
+    public SessionLogField(InputT inputType,String name) {
         this.itemName = name;
         this.itemInput = inputType;
-        this.itemValue = value;
     }
 }

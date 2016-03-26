@@ -14,7 +14,7 @@ package com.ttu_se1_project_team_3.model;
 
 public class FormItem {
     public enum InputT {
-        TEXT, CHECKBOXES, RADIOBUTTON
+        TEXT, CHECKBOX, RADIOBUTTON
     }
 
     public String itemName;
@@ -25,5 +25,38 @@ public class FormItem {
         this.itemName = null;
         this.itemInput = null;
         this.itemValue = null;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public InputT getItemInput() {
+        return itemInput;
+    }
+
+    public void setItemInput(InputT itemInput) {
+        this.itemInput = itemInput;
+    }
+
+    public String getItemValue() {
+        return itemValue;
+    }
+
+    public void setItemValue(String itemValue) {
+        this.itemValue = itemValue;
+    }
+
+    @Override
+    public String toString() {
+        return "FormItem{" +
+                "itemName='" + itemName + '\'' +
+                ", itemInput=" + itemInput +
+                ", itemValue='" + itemValue + '\'' +
+                '}';
     }
 }
