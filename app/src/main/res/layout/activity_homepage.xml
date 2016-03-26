@@ -13,8 +13,8 @@
         android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:onClick="createStudy"
-        android:text="@string/create_study" />
+        android:onClick="createTemplate"
+        android:text="@string/create_template" />
 
     <Button
         android:id="@+id/conduct_study_button"

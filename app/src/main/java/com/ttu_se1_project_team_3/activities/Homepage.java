@@ -24,9 +24,9 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
     }
 
-    public void createStudy(View v) {
-        Intent makeStudy = new Intent(this, TemplateDetails.class);
-        startActivity(makeStudy);
+    public void createTemplate(View v) {
+        Intent newTemplate = new Intent(this, TemplateDetails.class);
+        startActivity(newTemplate);
     }
 
     public void conductStudy(View v) {

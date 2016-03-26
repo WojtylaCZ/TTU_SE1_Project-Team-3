@@ -18,14 +18,14 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
  * This activity allows the user to create as many PreStudyFields as they wish
  * for their study.
  */
-public class CreatePreStudyFields extends AppCompatActivity {
+public class CreateSessionLogField extends AppCompatActivity {
     StudyTemplate studyTemplate;
     Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_sessionlog_fields);
+        setContentView(R.layout.activity_create_sessionlog_field);
         getStudyTemplate();
 
         spinner = (Spinner) findViewById(R.id.type_spinner);
@@ -65,7 +65,7 @@ public class CreatePreStudyFields extends AppCompatActivity {
 
     }
 
-    public void addPreStudyField(View v) {
+    public void addSessionLogField(View v) {
 
     }
 }

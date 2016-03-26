@@ -22,7 +22,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="325dp"
-        android:onClick="createPreStudyFields"
+        android:onClick="createSessionLogFields"
         android:text="@string/next_button"
         />
 
