@@ -10,16 +10,20 @@ package com.ttu_se1_project_team_3.model;
  * a study is conducted) and StudyFields (which are the study questions).
  */
 
-enum InputT {
-    TEXT, CHECKBOXES, RADIOBUTTON
-}
+
 
 public class FormItem {
+    public enum InputT {
+        TEXT, CHECKBOXES, RADIOBUTTON
+    }
+
     public String itemName;
     public InputT itemInput;
+    public String itemValue;
 
     public FormItem() {
         this.itemName = null;
         this.itemInput = null;
+        this.itemValue = null;
     }
 }

@@ -4,10 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 
+import com.google.gson.Gson;
 import com.ttu_se1_project_team_3.R;
 import com.ttu_se1_project_team_3.model.FormItem;
-import com.ttu_se1_project_team_3.model.InputT;
 import com.ttu_se1_project_team_3.model.SessionLogField;
+import com.ttu_se1_project_team_3.model.StudyTemplate;
 
 public class TestJSON extends AppCompatActivity {
 
@@ -16,7 +17,19 @@ public class TestJSON extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_json);
 
-        SessionLogField slf = new SessionLogField("name", InputT.TEXT);
+        SessionLogField slfName = new SessionLogField(FormItem.InputT.TEXT,"name","Vojta");
+        SessionLogField slfYear = new SessionLogField(FormItem.InputT.TEXT,"year","2016");
+
+        StudyTemplate studyTemplate = StudyTemplate.getInstance();
+
+        studyTemplate.ad
+
+        Gson gson = new Gson();
+        String json = gson.toJson(slfName);
+
+        System.out.println("zde"+json);
+
+
 
     }
 

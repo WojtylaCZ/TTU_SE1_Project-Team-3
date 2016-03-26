@@ -7,11 +7,9 @@ package com.ttu_se1_project_team_3.model;
  */
 public class SessionLogField extends FormItem {
 
-    /**
-    @param inputType is always TEXT
-     */
-    public SessionLogField(String name, InputT inputType) {
+    public SessionLogField(InputT inputType,String name,String value) {
         this.itemName = name;
         this.itemInput = inputType;
+        this.itemValue = value;
     }
 }
