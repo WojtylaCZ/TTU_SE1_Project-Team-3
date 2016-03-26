@@ -22,7 +22,9 @@
 
     <!--Template Creation-->
     <string name="enter_name">Enter Name</string>
-    <string name="create_sessionLog_field">Create SessionLog Field</string>
+    <string name="create_sessionLog">Create SessionLog</string>
+    <string name="add_sessionData">Add SessionData</string>
+
     <string-array name="input_types">
         <item>Text</item>
         <item>ToggleButtons</item>

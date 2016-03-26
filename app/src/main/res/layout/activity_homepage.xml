@@ -13,7 +13,7 @@
         android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:onClick="createTemplate"
+        android:onClick="createStudyTemplate"
         android:text="@string/create_template" />
 
     <Button
@@ -34,12 +34,5 @@
         android:onClick="exportTemplate"
         android:text="@string/export_template" />
 
-    <Button
-        android:id="@+id/analyze_study"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="@dimen/button_height"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="325dp"
-        android:onClick="analyzeStudy"
-        android:text="@string/analyze_study" />
+
 </RelativeLayout>

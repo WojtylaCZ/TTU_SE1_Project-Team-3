@@ -24,9 +24,9 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
     }
 
-    public void createTemplate(View v) {
-        Intent newTemplate = new Intent(this, TemplateDetails.class);
-        startActivity(newTemplate);
+    public void createStudyTemplate(View v) {
+        Intent newStudyTemplate = new Intent(this, CreateStudyTemplate.class);
+        startActivity(newStudyTemplate);
     }
 
     public void conductStudy(View v) {
@@ -37,7 +37,4 @@ public class Homepage extends AppCompatActivity {
 
     }
 
-    public void analyzeStudy(View v) {
-
-    }
 }

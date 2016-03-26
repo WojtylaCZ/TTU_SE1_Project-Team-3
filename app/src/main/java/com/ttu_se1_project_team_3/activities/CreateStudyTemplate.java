@@ -19,28 +19,27 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
  * - Institution (Optional) : Used to limit where the study can be used.
  * - Password (Optional) : Limit who can use the study.
  */
-public class TemplateDetails extends AppCompatActivity {
+public class CreateStudyTemplate extends AppCompatActivity {
     StudyTemplate studyTemplate;
     EditText text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_template_details);
+        setContentView(R.layout.activity_create_studytemplate);
 
         text = (EditText) findViewById(R.id.enter_name);
         studyTemplate = StudyTemplate.getInstance();
     }
 
-    public void createSessionLogFields(View v) {
+    public void createStudyTemplate(View v) {
         String name = text.getText().toString();
         if (name.matches("")) {
             text.setError("Please enter a name");
         } else {
-            Intent sessionLogField = new Intent(this, CreateSessionLogField.class);
             studyTemplate.setName(text.getText().toString());
-
-            startActivity(sessionLogField);
+            Intent studyTemplatePart = new Intent(this, CreateStudyTemplatePart.class);
+            startActivity(studyTemplatePart);
         }
     }
 

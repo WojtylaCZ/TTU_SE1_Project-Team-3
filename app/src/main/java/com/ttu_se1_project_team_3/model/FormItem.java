@@ -3,11 +3,11 @@ package com.ttu_se1_project_team_3.model;
 /**
  * Created by Isaac on 2/27/2016.
  *
- * This class is inherited by StudyField and SessionLogField.
+ * This class is inherited by @SessionLogField and @SessionDataField.
  *
  * The purpose of this class is to standardize some of the features
- * that are shared by both PreStudyFields (which are filled out before
- * a study is conducted) and StudyFields (which are the study questions).
+ * that are shared by both SessionLogFields (which are filled out before
+ * a study is conducted) and SessionDataField (which are the study questions).
  */
 
 
