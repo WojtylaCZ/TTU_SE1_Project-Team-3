@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+
+    tools:context="com.ttu_se1_project_team_3.activities.CreateStudyTemplatePart">
+
+    <Button
+        android:layout_width="@dimen/large_button_width"
+        android:layout_height="@dimen/large_button_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:onClick="createSessionLog"
+        android:text="@string/create_sessionLog" />
+
+    <Button
+        android:layout_width="@dimen/large_button_width"
+        android:layout_height="@dimen/large_button_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:onClick="addSessionData"
+        android:text="@string/add_sessionData" />
+
+</RelativeLayout>
