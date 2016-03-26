@@ -6,13 +6,13 @@ import java.util.ArrayList;
  * Created by Isaac on 2/27/2016.
  *
  * A StudyTemplate is the standard class for all user designed studies.
- * They add SessionLogFields and SessionDataFields, which are then used to dynamically
+ * They add PreStudyFields and StudyFields, which are then used to dynamically
  * generate pages when the study is conducted.
  */
 public class StudyTemplate {
     String studyName;
-    ArrayList<SessionLogField> sessionLogFields;
-    ArrayList<SessionDataField> sessionDataFields;
+    ArrayList<SessionLogField> preSurveyFields;
+    ArrayList<SessionDataField> surveyFields;
 
     private static StudyTemplate instance = null;
 
@@ -31,17 +31,17 @@ public class StudyTemplate {
         this.studyName = name;
     }
 
-    public void addSessionLogField(SessionLogField newField) {
-        this.sessionLogFields.add(newField);
+    public void addPreSurveyField(SessionLogField newField) {
+        this.preSurveyFields.add(newField);
     }
 
-    public void addSessionDataField(SessionDataField newField) {
-        this.sessionDataFields.add(newField);
+    public void addSurveyField(SessionDataField newField) {
+        this.surveyFields.add(newField);
     }
 
     public void clearTemplate() {
         studyName = null;
-        sessionLogFields = new ArrayList<>();
-        sessionDataFields = new ArrayList<>();
+        preSurveyFields = new ArrayList<>();
+        surveyFields = new ArrayList<>();
     }
 }
