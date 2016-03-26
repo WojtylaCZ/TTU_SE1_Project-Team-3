@@ -25,7 +25,7 @@ public class CreatePreStudyFields extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_sessionLog_fields);
+        setContentView(R.layout.activity_create_sessionlog_fields);
         getStudyTemplate();
 
         spinner = (Spinner) findViewById(R.id.type_spinner);
