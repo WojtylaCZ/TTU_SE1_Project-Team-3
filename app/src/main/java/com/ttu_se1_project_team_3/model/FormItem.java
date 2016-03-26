@@ -13,11 +13,11 @@ enum InputT {
     TEXT, CHECKBOXES, RADIOBUTTON
 }
 
-public class StudyItem {
+public class FormItem {
     public String itemName;
     public InputT itemInput;
 
-    public StudyItem() {
+    public FormItem() {
         this.itemName = null;
         this.itemInput = null;
     }

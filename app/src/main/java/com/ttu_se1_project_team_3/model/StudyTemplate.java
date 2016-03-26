@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class StudyTemplate {
     String studyName;
     ArrayList<SessionLogField> preSurveyFields;
-    ArrayList<StudyField> surveyFields;
+    ArrayList<SessionDataField> surveyFields;
 
     private static StudyTemplate instance = null;
 
@@ -35,7 +35,7 @@ public class StudyTemplate {
         this.preSurveyFields.add(newField);
     }
 
-    public void addSurveyField(StudyField newField) {
+    public void addSurveyField(SessionDataField newField) {
         this.surveyFields.add(newField);
     }
 
