@@ -30,4 +30,9 @@ public class Welcome extends AppCompatActivity {
         Intent creteAccount = new Intent(this, CreateAccount.class);
         startActivity(creteAccount);
     }
+
+    public void goToTestJSON(View v) {
+        Intent testJSON = new Intent(this, TestJSON.class);
+        startActivity(testJSON);
+    }
 }

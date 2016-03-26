@@ -9,6 +9,7 @@ package com.ttu_se1_project_team_3.model;
  * that are shared by both SessionLogField (which are filled out before
  * a study is conducted) and SessionDataField (which are the study questions).
  */
+
 enum InputT {
     TEXT, CHECKBOXES, RADIOBUTTON
 }

@@ -35,7 +35,10 @@
         <activity android:name=".activities.ForgotPassword">
             Forgot Password
         </activity>
-        <activity android:name=".activities.CreateAccount">Create Account</activity>
+        <activity android:name=".activities.CreateAccount">
+            Create Account
+        </activity>
+        <activity android:name=".activities.TestJSON"></activity>
     </application>
 
 </manifest>
