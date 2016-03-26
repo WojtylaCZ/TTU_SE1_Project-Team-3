@@ -32,15 +32,15 @@ public class TemplateDetails extends AppCompatActivity {
         studyTemplate = StudyTemplate.getInstance();
     }
 
-    public void createPreStudyFields(View v) {
+    public void createSessionLogFields(View v) {
         String name = text.getText().toString();
         if (name.matches("")) {
             text.setError("Please enter a name");
         } else {
-            Intent prestudy = new Intent(this, CreatePreStudyFields.class);
+            Intent sessionLogField = new Intent(this, CreateSessionLogField.class);
             studyTemplate.setName(text.getText().toString());
 
-            startActivity(prestudy);
+            startActivity(sessionLogField);
         }
     }
 
