@@ -29,8 +29,9 @@ public class Homepage extends AppCompatActivity {
         startActivity(newStudyTemplate);
     }
 
-    public void conductStudy(View v) {
-
+    public void selectStudy(View v) {
+        Intent newSelectStudy =  new Intent(this, SelectStudy.class);
+        startActivity(newSelectStudy);
     }
 
     public void exportTemplate(View v) {

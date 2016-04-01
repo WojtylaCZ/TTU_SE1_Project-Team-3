@@ -33,4 +33,5 @@
 
     <!--Create Account-->
     <string name="submit_createAccount">Create Account</string>
+    <string name="title_activity_conduct_study">ConductStudy</string>
 </resources>
