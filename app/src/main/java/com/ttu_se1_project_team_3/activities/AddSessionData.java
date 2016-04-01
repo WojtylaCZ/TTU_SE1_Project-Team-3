@@ -15,7 +15,7 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
 /**
  * Created by Isaac on 2/27/2016.
  * <p/>
- * This activity allows the user to create as many sessionLogFields as they wish
+ * This activity allows the user to create as many sessionDataFields as they wish
  * for their study.
  */
 public class AddSessionData extends AppCompatActivity {

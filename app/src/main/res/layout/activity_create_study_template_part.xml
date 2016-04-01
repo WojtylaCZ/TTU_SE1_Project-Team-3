@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:onClick="createSessionLog"
-        android:text="@string/create_sessionLog" />
+        android:text="@string/add_sessionLog" />
 
     <Button
         android:layout_width="@dimen/large_button_width"

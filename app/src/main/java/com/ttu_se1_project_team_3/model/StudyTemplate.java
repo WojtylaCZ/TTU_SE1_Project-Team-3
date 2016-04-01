@@ -21,7 +21,8 @@ public class StudyTemplate {
     private static StudyTemplate instance = null;
 
     private StudyTemplate() {
-        // Exists only to deal with instantiation.
+        sessionLogFields = new ArrayList<>();
+        sessionDataFields = new ArrayList<>();
     }
 
     public static StudyTemplate getInstance() {
@@ -35,12 +36,14 @@ public class StudyTemplate {
         this.studyName = name;
     }
 
-    public void addSessionLogField(SessionLogField newField) {
-        this.sessionLogFields.add(newField);
+    public void addSessionLogField(String name, String type) {
+        SessionLogField newField = new SessionLogField(name, type);
+        sessionLogFields.add(newField);
     }
 
-    public void addSessionDataField(SessionDataField newField) {
-        this.sessionDataFields.add(newField);
+    public void addSessionDataField(String name, String type) {
+        SessionDataField newField = new SessionDataField(name, type);
+        sessionDataFields.add(newField);
     }
 
     public void clearTemplate() {
