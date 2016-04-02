@@ -59,9 +59,11 @@ public class AddSessionLog extends AppCompatActivity {
     public void addSessionLogField(View v) {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = logName.getText().toString();
-        studyTemplate.addSessionLogField(inputName, inputType);
 
-        Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
+        if (studyTemplate.addSessionLogField(inputName, inputType))
+            Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(AddSessionLog.this, "That field name already exists.", Toast.LENGTH_LONG).show();
     }
 
     public void back(View v) {

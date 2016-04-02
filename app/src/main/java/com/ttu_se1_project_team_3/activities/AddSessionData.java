@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.ttu_se1_project_team_3.R;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
@@ -21,12 +23,15 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
 public class AddSessionData extends AppCompatActivity {
     StudyTemplate studyTemplate;
     Spinner spinner;
+    EditText dataName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sessiondata);
         getStudyTemplate();
+
+        dataName = (EditText) findViewById(R.id.session_data_name);
 
         spinner = (Spinner) findViewById(R.id.type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -51,12 +56,17 @@ public class AddSessionData extends AppCompatActivity {
     }
 
     public void addSessionDataField(View v) {
+        String inputType = spinner.getSelectedItem().toString();
+        String inputName = dataName.getText().toString();
 
+        if (studyTemplate.addSessionDataField(inputName, inputType))
+            Toast.makeText(AddSessionData.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(AddSessionData.this, "That field name already exists.", Toast.LENGTH_LONG).show();
     }
 
     public void back(View v) {
-
+        Intent studyTemplate = new Intent(this, CreateStudyTemplatePart.class);
+        startActivity(studyTemplate);
     }
-
-
 }
