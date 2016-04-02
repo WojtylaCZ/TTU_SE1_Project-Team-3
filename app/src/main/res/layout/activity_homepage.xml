@@ -34,5 +34,14 @@
         android:onClick="exportTemplate"
         android:text="@string/export_template" />
 
+    <Button
+        android:id="@+id/change_password"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="325dp"
+        android:onClick="changePassword"
+        android:text="Change Password" />
+
 
 </RelativeLayout>

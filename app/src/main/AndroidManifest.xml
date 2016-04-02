@@ -29,9 +29,15 @@
         <activity android:name=".activities.CreateStudyTemplate">
             Template Details
         </activity>
+        <activity
+            android:name=".activities.AddSessionLog"
+            android:launchMode="singleInstance">
         <activity android:name=".activities.CreateSessionLog">
             Create SessionLog
         </activity>
+        <activity
+            android:name=".activities.AddSessionData"
+            android:launchMode="singleInstance">
         <activity android:name=".activities.AddSessionData">
             Create SessionLog
         </activity>
@@ -41,8 +47,11 @@
         <activity android:name=".activities.CreateAccount">
             Create Account
         </activity>
-        <activity android:name=".activities.CreateStudyTemplatePart" />
-        <activity android:name=".activities.ConductStudy" />
+        <activity
+            android:name=".activities.CreateStudyTemplatePart"
+            android:launchMode="singleInstance">
+            Create Study Menu
+        </activity>
         <activity android:name=".activities.SelectStudy">Select Study</activity>
     </application>
 

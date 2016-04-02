@@ -11,8 +11,6 @@ import java.util.ArrayList;
  * generate pages when the study is conducted.
  *
  */
-
-
 public class StudyTemplate {
     String studyName;
     ArrayList<SessionLogField> sessionLogFields;
@@ -21,7 +19,8 @@ public class StudyTemplate {
     private static StudyTemplate instance = null;
 
     private StudyTemplate() {
-        // Exists only to deal with instantiation.
+        sessionLogFields = new ArrayList<>();
+        sessionDataFields = new ArrayList<>();
     }
 
     public static StudyTemplate getInstance() {
@@ -35,12 +34,38 @@ public class StudyTemplate {
         this.studyName = name;
     }
 
-    public void addSessionLogField(SessionLogField newField) {
-        this.sessionLogFields.add(newField);
+    public boolean addSessionLogField(String name, String type) {
+        if (!logFieldFree(name))
+            return false;
+
+        SessionLogField newField = new SessionLogField(name, type);
+        sessionLogFields.add(newField);
+        return true;
     }
 
-    public void addSessionDataField(SessionDataField newField) {
-        this.sessionDataFields.add(newField);
+    private boolean logFieldFree(String name) {
+        for (int i = 0; i<sessionLogFields.size(); i++) {
+            if (sessionLogFields.get(i).itemName.equals(name))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean addSessionDataField(String name, String type) {
+        if (!dataFieldFree(name))
+            return false;
+
+        SessionDataField newField = new SessionDataField(name, type);
+        sessionDataFields.add(newField);
+        return true;
+    }
+
+    private boolean dataFieldFree(String name) {
+        for (int i = 0; i<sessionDataFields.size(); i++) {
+            if (sessionDataFields.get(i).itemName.equals(name))
+                return false;
+        }
+        return true;
     }
 
     public void clearTemplate() {
