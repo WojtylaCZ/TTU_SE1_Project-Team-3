@@ -32,15 +32,11 @@
         <activity
             android:name=".activities.AddSessionLog"
             android:launchMode="singleInstance">
-        <activity android:name=".activities.CreateSessionLog">
-            Create SessionLog
         </activity>
         <activity
             android:name=".activities.AddSessionData"
             android:launchMode="singleInstance">
-        <activity android:name=".activities.AddSessionData">
-            Create SessionLog
-        </activity>
+            </activity>
         <activity android:name=".activities.ForgotPassword">
             Forgot Password
         </activity>
