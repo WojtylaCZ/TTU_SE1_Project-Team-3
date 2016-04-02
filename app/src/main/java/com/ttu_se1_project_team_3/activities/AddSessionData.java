@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.ttu_se1_project_team_3.R;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 
+import java.util.HashMap;
+
 /**
  * Created by Isaac on 2/27/2016.
  * <p/>
@@ -59,7 +61,11 @@ public class AddSessionData extends AppCompatActivity {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = dataName.getText().toString();
 
-        if (studyTemplate.addSessionDataField(inputName, inputType))
+        //@TODO UI for value inputs
+        HashMap<String,String> content = new HashMap<>();
+        content.put("TODO","TODO");
+
+        if (studyTemplate.addSessionDataField(inputName, inputType,content))
             Toast.makeText(AddSessionData.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionData.this, "That field name already exists.", Toast.LENGTH_LONG).show();

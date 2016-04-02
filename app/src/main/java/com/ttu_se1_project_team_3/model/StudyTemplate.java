@@ -1,6 +1,7 @@
 package com.ttu_se1_project_team_3.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Isaac on 2/27/2016.
@@ -63,15 +64,11 @@ public class StudyTemplate {
         this.sessionLogFields = sessionLogFields;
     }
 
-    public void addSessionLogField(SessionLogField newField) {
-        this.sessionLogFields.add(newField);
-    }
-
-    public boolean addSessionLogField(String name, String type) {
+    public boolean addSessionLogField(String name, String type,HashMap<String,String> values) {
         if (!logFieldFree(name))
             return false;
 
-        SessionLogField newField = new SessionLogField(name, type);
+        SessionLogField newField = new SessionLogField(name, type,values);
         sessionLogFields.add(newField);
         return true;
     }
@@ -84,11 +81,11 @@ public class StudyTemplate {
         return true;
     }
 
-    public boolean addSessionDataField(String name, String type) {
+    public boolean addSessionDataField(String name, String type,HashMap<String,String> values) {
         if (!dataFieldFree(name))
             return false;
 
-        SessionDataField newField = new SessionDataField(name, type);
+        SessionDataField newField = new SessionDataField(name, type,values);
         sessionDataFields.add(newField);
         return true;
     }
