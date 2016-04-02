@@ -72,4 +72,17 @@ public class FormItem {
                 ", itemValue='" + itemValue + '\'' +
                 '}';
     }
+
+    public static InputT getInputT(String input) {
+        switch(input) {
+            case "Text":
+                return InputT.TEXT;
+            case "ToggleButtons":
+                return InputT.RADIOBUTTON;
+            case "Checkboxes":
+                return InputT.CHECKBOXES;
+            default:
+                return InputT.TEXT;
+        }
+    }
 }

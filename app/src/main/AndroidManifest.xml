@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ttu_se1_project_team_3" >
+    package="com.ttu_se1_project_team_3">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,39 +9,49 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".activities.Main" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Welcome" >
+        <activity android:name=".activities.Welcome">
             Welcome
         </activity>
-        <activity android:name=".activities.Login" >
+        <activity android:name=".activities.Login">
             Login
         </activity>
-        <activity android:name=".activities.Homepage" >
+        <activity android:name=".activities.Homepage">
             Homepage
         </activity>
-        <activity android:name=".activities.CreateStudyTemplate" >
+        <activity android:name=".activities.CreateStudyTemplate">
             Template Details
         </activity>
-        <activity android:name=".activities.CreateSessionLog" >
+        <activity
+            android:name=".activities.AddSessionLog"
+            android:launchMode="singleInstance">
             Create SessionLog
         </activity>
-        <activity android:name=".activities.AddSessionData" >
+        <activity
+            android:name=".activities.AddSessionData"
+            android:launchMode="singleInstance">
             Create SessionLog
         </activity>
-        <activity android:name=".activities.ForgotPassword" >
+        <activity android:name=".activities.ForgotPassword">
             Forgot Password
         </activity>
-        <activity android:name=".activities.CreateAccount" >
-Create Account
+        <activity android:name=".activities.CreateAccount">
+            Create Account
         </activity>
-        <activity android:name=".activities.CreateStudyTemplatePart" >
+        <activity android:name = ".activities.ChangePassword">
+            Change Password
+        </activity>
+        <activity
+            android:name=".activities.CreateStudyTemplatePart"
+            android:launchMode="singleInstance">
+            Create Study Menu
         </activity>
     </application>
 

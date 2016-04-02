@@ -16,14 +16,12 @@ public class CreateStudyTemplatePart extends AppCompatActivity {
     }
 
     public void createSessionLog(View v) {
-        Intent newSessionLog = new Intent(this, CreateSessionLog.class);
+        Intent newSessionLog = new Intent(this, AddSessionLog.class);
         startActivity(newSessionLog);
-
     }
 
     public void addSessionData(View v) {
         Intent addSessionData = new Intent(this, AddSessionData.class);
         startActivity(addSessionData);
-
     }
 }

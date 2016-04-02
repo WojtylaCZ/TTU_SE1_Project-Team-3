@@ -6,9 +6,10 @@ import java.util.ArrayList;
  * Created by Isaac on 2/27/2016.
  * <p/>
  * A StudyTemplate is the standard class for all user designed studies.
- * <p/>
+ *
  * It contains @sessionLogFields and sessionDataFields, which are then used to dynamically
  * generate pages when the study is conducted.
+ *
  */
 
 
@@ -26,6 +27,10 @@ public class StudyTemplate {
      *
      * TODO VOJTA But because we handle different templates, I ask, do we need singleton here?
      */
+
+    public StudyTemplate() {
+        sessionLogFields = new ArrayList<>();
+        sessionDataFields = new ArrayList<>();
 
 
     public StudyTemplate() {
@@ -65,10 +70,38 @@ public class StudyTemplate {
 
     public void addSessionLogField(SessionLogField newField) {
         this.sessionLogFields.add(newField);
+    public boolean addSessionLogField(String name, String type) {
+        if (!logFieldFree(name))
+            return false;
+
+        SessionLogField newField = new SessionLogField(name, type);
+        sessionLogFields.add(newField);
+        return true;
     }
 
-    public void addSessionDataField(SessionDataField newField) {
-        this.sessionDataFields.add(newField);
+    private boolean logFieldFree(String name) {
+        for (int i = 0; i<sessionLogFields.size(); i++) {
+            if (sessionLogFields.get(i).itemName.equals(name))
+                return false;
+        }
+        return true;
+    }
+
+    public boolean addSessionDataField(String name, String type) {
+        if (!dataFieldFree(name))
+            return false;
+
+        SessionDataField newField = new SessionDataField(name, type);
+        sessionDataFields.add(newField);
+        return true;
+    }
+
+    private boolean dataFieldFree(String name) {
+        for (int i = 0; i<sessionDataFields.size(); i++) {
+            if (sessionDataFields.get(i).itemName.equals(name))
+                return false;
+        }
+        return true;
     }
 
     public void clearTemplate() {

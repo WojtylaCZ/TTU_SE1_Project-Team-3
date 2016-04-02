@@ -31,6 +31,11 @@ public class Login extends AppCompatActivity {
         enter_password = (EditText) findViewById(R.id.enter_password);
     }
 
+    public void forgotPassword(View v) {
+        Intent ForgotPassword = new Intent(this, ForgotPassword.class);
+        startActivity(ForgotPassword);
+    }
+
     public void login(View v) {
         db = DBconn.getInstance().getFbConnection();
 
@@ -57,9 +62,6 @@ public class Login extends AppCompatActivity {
 
     }
 
-    public void forgotPassword(View v) {
-        Intent forgotPassword = new Intent(this, ForgotPassword.class);
-        startActivity(forgotPassword);
-    }
+
 
 }
