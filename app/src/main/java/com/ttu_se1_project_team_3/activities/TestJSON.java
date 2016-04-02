@@ -9,15 +9,12 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
-import com.google.gson.Gson;
 import com.ttu_se1_project_team_3.R;
-import com.ttu_se1_project_team_3.model.FormItem;
 import com.ttu_se1_project_team_3.model.SessionDataField;
 import com.ttu_se1_project_team_3.model.SessionLogField;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class TestJSON extends AppCompatActivity {
@@ -29,27 +26,32 @@ public class TestJSON extends AppCompatActivity {
         setContentView(R.layout.activity_test_json);
         Random rand = new Random();
 
-        SessionLogField slfName = new SessionLogField("name", "Text");
-        slfName.setItemValue("Vojta");
+        HashMap<String,String> slfName = new HashMap<String,String>();
+        slfName.put("name", "Vojta");
 
-        SessionLogField slfYear = new SessionLogField("year", "Text" );
-        slfYear.setItemValue(String.valueOf(rand.nextInt(2000)));
+        HashMap<String,String> slfYear = new HashMap<String,String>( );
+        slfYear.put("year", "2016");
 
-        SessionDataField sdfx1 = new SessionDataField("behavior", "ToggleButtons");
-        sdfx1.setItemValue(String.valueOf(rand.nextInt(5)));
+        HashMap<String,String> sdfx1 = new HashMap<String,String>();
+        sdfx1.put("male", "0");
+        sdfx1.put("female", "0");
+        sdfx1.put("na", "0");
 
-        SessionDataField sdfx2 = new SessionDataField("polite", "Checkboxes");
-        sdfx2.setItemValue(String.valueOf(rand.nextInt(2)));
+        HashMap<String,String> sdfx2 = new HashMap<String,String>();
+        sdfx2.put("up", "0");
+        sdfx2.put("down", "0");
+        sdfx2.put("left", "0");
+        sdfx2.put("right", "0");
 
         StudyTemplate studyTemplate = StudyTemplate.getInstance();
         studyTemplate.clearTemplate();
         studyTemplate.setName("Foo");
 
-        studyTemplate.addSessionLogField(slfName);
-        studyTemplate.addSessionLogField(slfYear);
+        studyTemplate.addSessionLogField("name", "Text",slfName);
+        studyTemplate.addSessionLogField("year", "Text",slfYear);
 
-        studyTemplate.addSessionDataField(sdfx1);
-        studyTemplate.addSessionDataField(sdfx2);
+        studyTemplate.addSessionDataField("gender", "RadioButtons",sdfx1);
+        studyTemplate.addSessionDataField("gestures", "Checkboxes",sdfx2);
 
         db = DBconn.getInstance().getFbConnection();
 

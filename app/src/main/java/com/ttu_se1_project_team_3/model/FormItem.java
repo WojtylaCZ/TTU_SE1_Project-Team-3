@@ -1,5 +1,8 @@
 package com.ttu_se1_project_team_3.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created by Isaac on 2/27/2016.
  *
@@ -11,7 +14,7 @@ package com.ttu_se1_project_team_3.model;
  */
 
 enum InputT {
-    TEXT, CHECKBOXES, RADIOBUTTON
+    TEXT, CHECKBOXES, RADIOBUTTONS
 }
 
 
@@ -19,20 +22,20 @@ public class FormItem {
 
     public String itemName;
     public InputT itemInput;
-    public String itemValue;
+    public HashMap<String,String> itemValues;
 
     public FormItem() {
         this.itemName = null;
         this.itemInput = null;
-        this.itemValue = null;
+        this.itemValues = null;
     }
 
     public static InputT getInputT(String input) {
         switch(input) {
             case "Text":
                 return InputT.TEXT;
-            case "ToggleButtons":
-                return InputT.RADIOBUTTON;
+            case "RadioButtons":
+                return InputT.RADIOBUTTONS;
             case "Checkboxes":
                 return InputT.CHECKBOXES;
             default:
@@ -56,12 +59,12 @@ public class FormItem {
         this.itemInput = itemInput;
     }
 
-    public String getItemValue() {
-        return itemValue;
+    public HashMap<String,String>  getItemValues() {
+        return itemValues;
     }
 
-    public void setItemValue(String itemValue) {
-        this.itemValue = itemValue;
+    public void setItemValues(HashMap<String,String>  itemValues) {
+        this.itemValues = itemValues;
     }
 
     @Override
@@ -69,7 +72,7 @@ public class FormItem {
         return "FormItem{" +
                 "itemName='" + itemName + '\'' +
                 ", itemInput=" + itemInput +
-                ", itemValue='" + itemValue + '\'' +
+                ", itemValues='" + itemValues + '\'' +
                 '}';
     }
 }
