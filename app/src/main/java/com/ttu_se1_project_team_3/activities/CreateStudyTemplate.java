@@ -37,7 +37,7 @@ public class CreateStudyTemplate extends AppCompatActivity {
         if (name.matches("")) {
             text.setError("Please enter a name");
         } else {
-            studyTemplate.setStudyTemplateName(text.getText().toString());
+            studyTemplate.setName(text.getText().toString());
             Intent studyTemplatePart = new Intent(this, CreateStudyTemplatePart.class);
             startActivity(studyTemplatePart);
         }

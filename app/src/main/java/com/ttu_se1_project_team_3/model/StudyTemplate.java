@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class StudyTemplate {
 
-    String studyTemplateName;
+    String name;
     ArrayList<SessionLogField> sessionLogFields;
     ArrayList<SessionDataField> sessionDataFields;
 
@@ -39,12 +39,12 @@ public class StudyTemplate {
         return instance;
     }
 
-    public String getStudyTemplateName() {
-        return studyTemplateName;
+    public String getName() {
+        return name;
     }
 
-    public void setStudyTemplateName(String studyTemplateName) {
-        this.studyTemplateName = studyTemplateName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ArrayList<SessionDataField> getSessionDataFields() {
@@ -72,7 +72,7 @@ public class StudyTemplate {
     }
 
     public void clearTemplate() {
-        studyTemplateName = null;
+        name = null;
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
     }
@@ -80,7 +80,7 @@ public class StudyTemplate {
     @Override
     public String toString() {
         return "StudyTemplate{" +
-                "studyTemplateName='" + studyTemplateName + '\'' +
+                "name='" + name + '\'' +
                 ", sessionLogFields=" + sessionLogFields +
                 ", sessionDataFields=" + sessionDataFields +
                 '}';

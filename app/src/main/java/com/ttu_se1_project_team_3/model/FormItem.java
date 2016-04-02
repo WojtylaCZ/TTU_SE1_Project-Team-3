@@ -10,12 +10,12 @@ package com.ttu_se1_project_team_3.model;
  * a study is conducted) and SessionDataField (which are the study questions).
  */
 
+enum InputT {
+    TEXT, CHECKBOXES, RADIOBUTTON
+}
 
 
 public class FormItem {
-    public enum InputT {
-        TEXT, CHECKBOX, RADIOBUTTON
-    }
 
     public String itemName;
     public InputT itemInput;
@@ -25,6 +25,19 @@ public class FormItem {
         this.itemName = null;
         this.itemInput = null;
         this.itemValue = null;
+    }
+
+    public static InputT getInputT(String input) {
+        switch(input) {
+            case "Text":
+                return InputT.TEXT;
+            case "ToggleButtons":
+                return InputT.RADIOBUTTON;
+            case "Checkboxes":
+                return InputT.CHECKBOXES;
+            default:
+                return InputT.TEXT;
+        }
     }
 
     public String getItemName() {

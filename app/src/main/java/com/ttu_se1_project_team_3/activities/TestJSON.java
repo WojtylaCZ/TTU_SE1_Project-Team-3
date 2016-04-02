@@ -29,21 +29,21 @@ public class TestJSON extends AppCompatActivity {
         setContentView(R.layout.activity_test_json);
         Random rand = new Random();
 
-        SessionLogField slfName = new SessionLogField(FormItem.InputT.TEXT, "name");
+        SessionLogField slfName = new SessionLogField("name", "Text");
         slfName.setItemValue("Vojta");
 
-        SessionLogField slfYear = new SessionLogField(FormItem.InputT.TEXT, "year");
+        SessionLogField slfYear = new SessionLogField("year", "Text" );
         slfYear.setItemValue(String.valueOf(rand.nextInt(2000)));
 
-        SessionDataField sdfx1 = new SessionDataField(FormItem.InputT.RADIOBUTTON, "behavior");
+        SessionDataField sdfx1 = new SessionDataField("behavior", "ToggleButtons");
         sdfx1.setItemValue(String.valueOf(rand.nextInt(5)));
 
-        SessionDataField sdfx2 = new SessionDataField(FormItem.InputT.CHECKBOX, "polite");
+        SessionDataField sdfx2 = new SessionDataField("polite", "Checkboxes");
         sdfx2.setItemValue(String.valueOf(rand.nextInt(2)));
 
         StudyTemplate studyTemplate = StudyTemplate.getInstance();
         studyTemplate.clearTemplate();
-        studyTemplate.setStudyTemplateName("Foo");
+        studyTemplate.setName("Foo");
 
         studyTemplate.addSessionLogField(slfName);
         studyTemplate.addSessionLogField(slfYear);
