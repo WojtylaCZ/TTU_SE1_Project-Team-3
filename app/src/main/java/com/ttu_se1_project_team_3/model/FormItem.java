@@ -9,17 +9,68 @@ package com.ttu_se1_project_team_3.model;
  * that are shared by both SessionLogFields (which are filled out before
  * a study is conducted) and SessionDataField (which are the study questions).
  */
+
 enum InputT {
     TEXT, CHECKBOXES, RADIOBUTTON
 }
 
+
 public class FormItem {
+
     public String itemName;
     public InputT itemInput;
+    public String itemValue;
 
     public FormItem() {
         this.itemName = null;
         this.itemInput = null;
+        this.itemValue = null;
+    }
+
+    public static InputT getInputT(String input) {
+        switch(input) {
+            case "Text":
+                return InputT.TEXT;
+            case "ToggleButtons":
+                return InputT.RADIOBUTTON;
+            case "Checkboxes":
+                return InputT.CHECKBOXES;
+            default:
+                return InputT.TEXT;
+        }
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public InputT getItemInput() {
+        return itemInput;
+    }
+
+    public void setItemInput(InputT itemInput) {
+        this.itemInput = itemInput;
+    }
+
+    public String getItemValue() {
+        return itemValue;
+    }
+
+    public void setItemValue(String itemValue) {
+        this.itemValue = itemValue;
+    }
+
+    @Override
+    public String toString() {
+        return "FormItem{" +
+                "itemName='" + itemName + '\'' +
+                ", itemInput=" + itemInput +
+                ", itemValue='" + itemValue + '\'' +
+                '}';
     }
 
     public static InputT getInputT(String input) {

@@ -21,6 +21,9 @@ public class SessionDataField extends FormItem {
     public standardInputStyles inputStyle;
     public ArrayList<String> standardInputs;
 
+    public SessionDataField() {
+    }
+
     public SessionDataField(String name, String inputType) {
         this.itemName = name;
         this.itemInput = getInputT(inputType);

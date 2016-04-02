@@ -11,16 +11,30 @@ import java.util.ArrayList;
  * generate pages when the study is conducted.
  *
  */
+
+
 public class StudyTemplate {
-    String studyName;
+
+    String name;
     ArrayList<SessionLogField> sessionLogFields;
     ArrayList<SessionDataField> sessionDataFields;
 
     private static StudyTemplate instance = null;
 
-    private StudyTemplate() {
+
+    /**
+     * TODO because it is singleton, it should be private. But Jackson parser within Firebase needs contructors public :/
+     *
+     * TODO VOJTA But because we handle different templates, I ask, do we need singleton here?
+     */
+
+    public StudyTemplate() {
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
+
+
+    public StudyTemplate() {
+        // Exists only to deal with instantiation.
     }
 
     public static StudyTemplate getInstance() {
@@ -30,10 +44,32 @@ public class StudyTemplate {
         return instance;
     }
 
-    public void setName(String name) {
-        this.studyName = name;
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<SessionDataField> getSessionDataFields() {
+        return sessionDataFields;
+    }
+
+    public void setSessionDataFields(ArrayList<SessionDataField> sessionDataFields) {
+        this.sessionDataFields = sessionDataFields;
+    }
+
+    public ArrayList<SessionLogField> getSessionLogFields() {
+        return sessionLogFields;
+    }
+
+    public void setSessionLogFields(ArrayList<SessionLogField> sessionLogFields) {
+        this.sessionLogFields = sessionLogFields;
+    }
+
+    public void addSessionLogField(SessionLogField newField) {
+        this.sessionLogFields.add(newField);
     public boolean addSessionLogField(String name, String type) {
         if (!logFieldFree(name))
             return false;
@@ -69,8 +105,17 @@ public class StudyTemplate {
     }
 
     public void clearTemplate() {
-        studyName = null;
+        name = null;
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "StudyTemplate{" +
+                "name='" + name + '\'' +
+                ", sessionLogFields=" + sessionLogFields +
+                ", sessionDataFields=" + sessionDataFields +
+                '}';
     }
 }

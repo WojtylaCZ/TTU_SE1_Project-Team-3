@@ -25,8 +25,14 @@ public class DBconn {
         fbConnection = new Firebase(DB_LOCATION);
     }
 
-    public Firebase getFbConnection(){
+    public Firebase getFbConnection() {
         return fbConnection;
     }
+
+    public Firebase getTemplatesQueryConn() {
+        return fbConnection.child("Templates");
+
+    }
+
 
 }
