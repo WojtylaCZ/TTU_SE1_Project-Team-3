@@ -48,11 +48,6 @@
         <activity android:name = ".activities.ChangePassword">
             Change Password
         </activity>
-        <activity
-            android:name=".activities.CreateStudyTemplatePart"
-            android:launchMode="singleInstance">
-            Create Study Menu
-        </activity>
     </application>
 
 </manifest>

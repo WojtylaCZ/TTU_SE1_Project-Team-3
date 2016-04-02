@@ -66,8 +66,13 @@ public class AddSessionLog extends AppCompatActivity {
             Toast.makeText(AddSessionLog.this, "That field name already exists.", Toast.LENGTH_LONG).show();
     }
 
+    public void next(View v) {
+        Intent sessionData = new Intent(this, AddSessionData.class);
+        startActivity(sessionData);
+    }
+
     public void back(View v) {
-        Intent studyTemplate = new Intent(this, CreateStudyTemplatePart.class);
+        Intent studyTemplate = new Intent(this, CreateStudyTemplate.class);
         startActivity(studyTemplate);
     }
 }
