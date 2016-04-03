@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.firebase.client.Firebase;
 import com.ttu_se1_project_team_3.R;
+import com.google.gson.*;
 
 /**
  * The MainActivity is redirecting to the Welcome Activity, this is done to separate

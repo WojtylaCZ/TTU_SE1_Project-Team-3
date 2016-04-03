@@ -1,6 +1,7 @@
 package com.ttu_se1_project_team_3.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Isaac on 2/27/2016.
@@ -21,10 +22,14 @@ public class SessionDataField extends FormItem {
     public standardInputStyles inputStyle;
     public ArrayList<String> standardInputs;
 
-    public SessionDataField(String name, String inputType) {
+    public SessionDataField() {
+    }
+
+    public SessionDataField(String name, String inputType, HashMap<String,String> values) {
         this.itemName = name;
         this.itemInput = getInputT(inputType);
         this.inputStyle = standardInputStyles.NORMAL;
+        this.itemValues = values;
     }
 
     public void addStandardInput(String standardInput) {

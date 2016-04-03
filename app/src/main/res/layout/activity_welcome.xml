@@ -26,4 +26,15 @@
         android:layout_marginTop="225dp"
         android:onClick="goToCreateAccount"
         android:text="@string/create_account" />
+
+    <Button
+        android:id="@+id/test1"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="300dp"
+        android:onClick="goToTestJSON"
+        android:text="TEST" />
+
+
 </RelativeLayout>

@@ -1,24 +1,34 @@
 package com.ttu_se1_project_team_3.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Isaac on 2/27/2016.
- * <p/>
+ * <p>
  * A StudyTemplate is the standard class for all user designed studies.
- *
+ * <p>
  * It contains @sessionLogFields and sessionDataFields, which are then used to dynamically
  * generate pages when the study is conducted.
- *
  */
+
+
 public class StudyTemplate {
-    String studyName;
+
+    String name;
     ArrayList<SessionLogField> sessionLogFields;
     ArrayList<SessionDataField> sessionDataFields;
 
     private static StudyTemplate instance = null;
 
-    private StudyTemplate() {
+
+    /**
+     * TODO because it is singleton, it should be private. But Jackson parser within Firebase needs contructors public :/
+     * <p>
+     * TODO VOJTA But because we handle different templates, I ask, do we need singleton here?
+     */
+
+    public StudyTemplate() {
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
     }
@@ -30,38 +40,58 @@ public class StudyTemplate {
         return instance;
     }
 
-    public void setName(String name) {
-        this.studyName = name;
+    public String getName() {
+        return name;
     }
 
-    public boolean addSessionLogField(String name, String type) {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<SessionDataField> getSessionDataFields() {
+        return sessionDataFields;
+    }
+
+    public void setSessionDataFields(ArrayList<SessionDataField> sessionDataFields) {
+        this.sessionDataFields = sessionDataFields;
+    }
+
+    public ArrayList<SessionLogField> getSessionLogFields() {
+        return sessionLogFields;
+    }
+
+    public void setSessionLogFields(ArrayList<SessionLogField> sessionLogFields) {
+        this.sessionLogFields = sessionLogFields;
+    }
+
+    public boolean addSessionLogField(String name, String type,HashMap<String,String> values) {
         if (!logFieldFree(name))
             return false;
 
-        SessionLogField newField = new SessionLogField(name, type);
+        SessionLogField newField = new SessionLogField(name, type,values);
         sessionLogFields.add(newField);
         return true;
     }
 
     private boolean logFieldFree(String name) {
-        for (int i = 0; i<sessionLogFields.size(); i++) {
+        for (int i = 0; i < sessionLogFields.size(); i++) {
             if (sessionLogFields.get(i).itemName.equals(name))
                 return false;
         }
         return true;
     }
 
-    public boolean addSessionDataField(String name, String type) {
+    public boolean addSessionDataField(String name, String type,HashMap<String,String> values) {
         if (!dataFieldFree(name))
             return false;
 
-        SessionDataField newField = new SessionDataField(name, type);
+        SessionDataField newField = new SessionDataField(name, type,values);
         sessionDataFields.add(newField);
         return true;
     }
 
     private boolean dataFieldFree(String name) {
-        for (int i = 0; i<sessionDataFields.size(); i++) {
+        for (int i = 0; i < sessionDataFields.size(); i++) {
             if (sessionDataFields.get(i).itemName.equals(name))
                 return false;
         }
@@ -69,8 +99,17 @@ public class StudyTemplate {
     }
 
     public void clearTemplate() {
-        studyName = null;
+        name = null;
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
+    }
+
+    @Override
+    public String toString() {
+        return "StudyTemplate{" +
+                "name='" + name + '\'' +
+                ", sessionLogFields=" + sessionLogFields +
+                ", sessionDataFields=" + sessionDataFields +
+                '}';
     }
 }
