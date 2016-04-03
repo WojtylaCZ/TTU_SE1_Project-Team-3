@@ -15,6 +15,8 @@ import com.ttu_se1_project_team_3.R;
 import com.ttu_se1_project_team_3.model.FormItem;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 
+import java.util.HashMap;
+
 /**
  * Created by Isaac on 2/27/2016.
  *
@@ -60,7 +62,11 @@ public class AddSessionLog extends AppCompatActivity {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = logName.getText().toString();
 
-        if (studyTemplate.addSessionLogField(inputName, inputType))
+        //@TODO UI for value inputs
+        HashMap<String,String> content = new HashMap<>();
+        content.put("TODO","TODO");
+
+        if (studyTemplate.addSessionLogField(inputName, inputType,content))
             Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionLog.this, "That field name already exists.", Toast.LENGTH_LONG).show();

@@ -32,21 +32,31 @@
         <activity
             android:name=".activities.AddSessionLog"
             android:launchMode="singleInstance">
+            Create SessionLog
         </activity>
         <activity
             android:name=".activities.AddSessionData"
             android:launchMode="singleInstance">
-            </activity>
+            Create SessionLog
+        </activity>
         <activity android:name=".activities.ForgotPassword">
             Forgot Password
         </activity>
         <activity android:name=".activities.CreateAccount">
             Create Account
         </activity>
+        <activity android:name = ".activities.ChangePassword">
+            Change Password
+        </activity>
         <activity
             android:name=".activities.CreateStudyTemplatePart"
             android:launchMode="singleInstance">
             Create Study Menu
+        </activity>
+        <activity
+            android:name=".activities.TestJSON"
+            android:launchMode="singleInstance">
+            JSON test activity
         </activity>
         <activity android:name=".activities.SelectStudy">Select Study</activity>
     </application>
