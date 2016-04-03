@@ -10,6 +10,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.ttu_se1_project_team_3.R;
+import com.ttu_se1_project_team_3.model.AppState;
 import com.ttu_se1_project_team_3.model.SessionDataField;
 import com.ttu_se1_project_team_3.model.SessionLogField;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
@@ -26,24 +27,25 @@ public class TestJSON extends AppCompatActivity {
         setContentView(R.layout.activity_test_json);
         Random rand = new Random();
 
-        HashMap<String,String> slfName = new HashMap<String,String>();
+        HashMap<String,String> slfName = new HashMap<>();
         slfName.put("name", "Vojta");
 
-        HashMap<String,String> slfYear = new HashMap<String,String>( );
+        HashMap<String,String> slfYear = new HashMap<>( );
         slfYear.put("year", "2016");
 
-        HashMap<String,String> sdfx1 = new HashMap<String,String>();
+        HashMap<String,String> sdfx1 = new HashMap<>();
         sdfx1.put("male", "0");
         sdfx1.put("female", "0");
         sdfx1.put("na", "0");
 
-        HashMap<String,String> sdfx2 = new HashMap<String,String>();
+        HashMap<String,String> sdfx2 = new HashMap<>();
         sdfx2.put("up", "0");
         sdfx2.put("down", "0");
         sdfx2.put("left", "0");
         sdfx2.put("right", "0");
 
-        StudyTemplate studyTemplate = StudyTemplate.getInstance();
+        AppState appState = AppState.getInstance();
+        StudyTemplate studyTemplate = appState.getStudyTemplate();
         studyTemplate.clearTemplate();
         studyTemplate.setName("Foo");
 

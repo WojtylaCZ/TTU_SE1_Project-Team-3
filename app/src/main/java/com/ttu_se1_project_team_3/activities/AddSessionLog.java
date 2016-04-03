@@ -12,6 +12,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.ttu_se1_project_team_3.R;
+import com.ttu_se1_project_team_3.model.AppState;
 import com.ttu_se1_project_team_3.model.FormItem;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 
@@ -24,6 +25,7 @@ import java.util.HashMap;
  * for their study.
  */
 public class AddSessionLog extends AppCompatActivity {
+    AppState appState;
     StudyTemplate studyTemplate;
     Spinner spinner;
     EditText logName;
@@ -55,7 +57,8 @@ public class AddSessionLog extends AppCompatActivity {
     }
 
     public void getStudyTemplate() {
-        this.studyTemplate = StudyTemplate.getInstance();
+        this.appState = AppState.getInstance();
+        this.studyTemplate = appState.getStudyTemplate();
     }
 
     public void addSessionLogField(View v) {

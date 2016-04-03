@@ -19,25 +19,9 @@ public class StudyTemplate {
     ArrayList<SessionLogField> sessionLogFields;
     ArrayList<SessionDataField> sessionDataFields;
 
-    private static StudyTemplate instance = null;
-
-
-    /**
-     * TODO because it is singleton, it should be private. But Jackson parser within Firebase needs contructors public :/
-     * <p>
-     * TODO VOJTA But because we handle different templates, I ask, do we need singleton here?
-     */
-
     public StudyTemplate() {
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
-    }
-
-    public static StudyTemplate getInstance() {
-        if (instance == null) {
-            instance = new StudyTemplate();
-        }
-        return instance;
     }
 
     public String getName() {

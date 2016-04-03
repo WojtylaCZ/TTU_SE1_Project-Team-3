@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.ttu_se1_project_team_3.R;
+import com.ttu_se1_project_team_3.model.AppState;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 
 /**
@@ -20,6 +21,7 @@ import com.ttu_se1_project_team_3.model.StudyTemplate;
  * - Password (Optional) : Limit who can use the study.
  */
 public class CreateStudyTemplate extends AppCompatActivity {
+    AppState appState;
     StudyTemplate studyTemplate;
     EditText text;
 
@@ -29,7 +31,8 @@ public class CreateStudyTemplate extends AppCompatActivity {
         setContentView(R.layout.activity_create_studytemplate);
 
         text = (EditText) findViewById(R.id.enter_name);
-        studyTemplate = StudyTemplate.getInstance();
+        appState = AppState.getInstance();
+        studyTemplate = appState.getStudyTemplate();
     }
 
     public void createStudyTemplate(View v) {
