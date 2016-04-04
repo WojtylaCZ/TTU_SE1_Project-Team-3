@@ -21,7 +21,7 @@ public class DBconn {
         return ourInstance;
     }
 
-    private DBconn() {
+    public DBconn() {
         fbConnection = new Firebase(DB_LOCATION);
     }
 

@@ -15,6 +15,7 @@ import com.ttu_se1_project_team_3.R;
  * - Create a Study Template
  * - Conduct a study via a Study Template
  * - Export a Study Template
+ * - Howdy
  * - Analyze a Study
  */
 public class Homepage extends AppCompatActivity {
@@ -31,8 +32,9 @@ public class Homepage extends AppCompatActivity {
         startActivity(newStudyTemplate);
     }
 
-    public void conductStudy(View v) {
-
+    public void selectStudy(View v) {
+        Intent newSelectStudy =  new Intent(this, SelectStudy.class);
+        startActivity(newSelectStudy);
     }
     public void changePassword(View v){
         Intent ChangePassword = new Intent(this, com.ttu_se1_project_team_3.activities.ChangePassword.class);

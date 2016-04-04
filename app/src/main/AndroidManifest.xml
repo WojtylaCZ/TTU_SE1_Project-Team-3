@@ -53,6 +53,7 @@
             android:launchMode="singleInstance">
             JSON test activity
         </activity>
+        <activity android:name=".activities.SelectStudy">Select Study</activity>
     </application>
 
 </manifest>
