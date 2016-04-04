@@ -11,13 +11,11 @@ import java.util.HashMap;
  * It contains @sessionLogFields and sessionDataFields, which are then used to dynamically
  * generate pages when the study is conducted.
  */
-
-
 public class StudyTemplate {
 
-    String name;
-    ArrayList<SessionLogField> sessionLogFields;
-    ArrayList<SessionDataField> sessionDataFields;
+    private String name;
+    private ArrayList<SessionLogField> sessionLogFields;
+    private ArrayList<SessionDataField> sessionDataFields;
 
     public StudyTemplate() {
         sessionLogFields = new ArrayList<>();
@@ -30,22 +28,6 @@ public class StudyTemplate {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ArrayList<SessionDataField> getSessionDataFields() {
-        return sessionDataFields;
-    }
-
-    public void setSessionDataFields(ArrayList<SessionDataField> sessionDataFields) {
-        this.sessionDataFields = sessionDataFields;
-    }
-
-    public ArrayList<SessionLogField> getSessionLogFields() {
-        return sessionLogFields;
-    }
-
-    public void setSessionLogFields(ArrayList<SessionLogField> sessionLogFields) {
-        this.sessionLogFields = sessionLogFields;
     }
 
     public boolean addSessionLogField(String name, String type,HashMap<String,String> values) {
