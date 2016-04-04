@@ -43,30 +43,6 @@ public class FormItem {
         }
     }
 
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public InputT getItemInput() {
-        return itemInput;
-    }
-
-    public void setItemInput(InputT itemInput) {
-        this.itemInput = itemInput;
-    }
-
-    public HashMap<String,String>  getItemValues() {
-        return itemValues;
-    }
-
-    public void setItemValues(HashMap<String,String>  itemValues) {
-        this.itemValues = itemValues;
-    }
-
     @Override
     public String toString() {
         return "FormItem{" +
