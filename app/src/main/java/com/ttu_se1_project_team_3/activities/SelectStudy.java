@@ -60,8 +60,12 @@ public class SelectStudy extends AppCompatActivity implements OnItemSelectedList
                  */
                 ArrayAdapter<String> templateAdapter = new ArrayAdapter<String>(SelectStudy.this, android.R.layout.simple_spinner_dropdown_item, templates);
                 items = (Spinner) findViewById(R.id.nameSpinner);
-                items.setAdapter(templateAdapter);
-                items.setOnItemSelectedListener(SelectStudy.this);
+                if (items != null) {
+                    items.setAdapter(templateAdapter);
+                }
+                if (items != null) {
+                    items.setOnItemSelectedListener(SelectStudy.this);
+                }
 
             }
 
