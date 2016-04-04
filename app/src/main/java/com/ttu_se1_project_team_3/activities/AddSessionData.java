@@ -69,7 +69,7 @@ public class AddSessionData extends AppCompatActivity {
         content.put("TODO","TODO");
 
         if (studyTemplate.addSessionDataField(inputName, inputType,content))
-            Toast.makeText(AddSessionData.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddSessionData.this, "You've added a Session Data Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionData.this, "That field name already exists.", Toast.LENGTH_LONG).show();
     }

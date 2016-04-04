@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
         android:onClick="addSessionDataField"
-        android:text="@string/add_sessionLog" />
+        android:text="@string/add_sessionData" />
 
     <Button
         android:id="@+id/next"
