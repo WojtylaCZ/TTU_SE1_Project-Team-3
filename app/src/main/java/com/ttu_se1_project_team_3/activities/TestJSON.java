@@ -44,8 +44,7 @@ public class TestJSON extends AppCompatActivity {
         sdfx2.put("left", "0");
         sdfx2.put("right", "0");
 
-        AppState appState = AppState.getInstance();
-        StudyTemplate studyTemplate = appState.getStudyTemplate();
+        StudyTemplate studyTemplate = new StudyTemplate();
         studyTemplate.clearTemplate();
         studyTemplate.setName("Foo");
 

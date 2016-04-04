@@ -10,6 +10,8 @@ import java.util.HashMap;
  */
 public class SessionLogField extends FormItem {
 
+    public SessionLogField() {}
+
     public SessionLogField(String name, String inputType, HashMap<String, String> values) {
         this.itemName = name;
         this.itemInput = getInputT(inputType);

@@ -30,6 +30,22 @@ public class StudyTemplate {
         this.name = name;
     }
 
+    public ArrayList<SessionLogField> getSessionLogFields() {
+        return sessionLogFields;
+    }
+
+    public void setSessionLogFields(ArrayList<SessionLogField> logFields) {
+        sessionLogFields = logFields;
+    }
+
+    public ArrayList<SessionDataField> getSessionDataFields() {
+        return sessionDataFields;
+    }
+
+    public void setSessionDataFields(ArrayList<SessionDataField> dataFields) {
+        sessionDataFields = dataFields;
+    }
+
     public boolean addSessionLogField(String name, String type,HashMap<String,String> values) {
         if (!logFieldFree(name))
             return false;
