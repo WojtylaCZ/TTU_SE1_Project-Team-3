@@ -11,33 +11,15 @@ import java.util.HashMap;
  * It contains @sessionLogFields and sessionDataFields, which are then used to dynamically
  * generate pages when the study is conducted.
  */
-
-
 public class StudyTemplate {
 
-    String name;
-    ArrayList<SessionLogField> sessionLogFields;
-    ArrayList<SessionDataField> sessionDataFields;
-
-    private static StudyTemplate instance = null;
-
-
-    /**
-     * TODO because it is singleton, it should be private. But Jackson parser within Firebase needs contructors public :/
-     * <p>
-     * TODO VOJTA But because we handle different templates, I ask, do we need singleton here?
-     */
+    private String name;
+    private ArrayList<SessionLogField> sessionLogFields;
+    private ArrayList<SessionDataField> sessionDataFields;
 
     public StudyTemplate() {
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
-    }
-
-    public static StudyTemplate getInstance() {
-        if (instance == null) {
-            instance = new StudyTemplate();
-        }
-        return instance;
     }
 
     public String getName() {
@@ -48,20 +30,20 @@ public class StudyTemplate {
         this.name = name;
     }
 
-    public ArrayList<SessionDataField> getSessionDataFields() {
-        return sessionDataFields;
-    }
-
-    public void setSessionDataFields(ArrayList<SessionDataField> sessionDataFields) {
-        this.sessionDataFields = sessionDataFields;
-    }
-
     public ArrayList<SessionLogField> getSessionLogFields() {
         return sessionLogFields;
     }
 
-    public void setSessionLogFields(ArrayList<SessionLogField> sessionLogFields) {
-        this.sessionLogFields = sessionLogFields;
+    public void setSessionLogFields(ArrayList<SessionLogField> logFields) {
+        sessionLogFields = logFields;
+    }
+
+    public ArrayList<SessionDataField> getSessionDataFields() {
+        return sessionDataFields;
+    }
+
+    public void setSessionDataFields(ArrayList<SessionDataField> dataFields) {
+        sessionDataFields = dataFields;
     }
 
     public boolean addSessionLogField(String name, String type,HashMap<String,String> values) {

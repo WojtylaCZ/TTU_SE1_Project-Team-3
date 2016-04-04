@@ -37,6 +37,17 @@
         android:text="@string/add_sessionLog" />
 
     <Button
+        android:id="@+id/next"
+        android:layout_width="@dimen/small_button_width"
+        android:layout_height="@dimen/small_button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:onClick="next"
+        android:text="@string/next_button"
+        />
+
+    <Button
         android:id="@+id/back"
         android:layout_width="@dimen/small_button_width"
         android:layout_height="@dimen/small_button_height"

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by wojtyla on 3/2/16.
+ * Going to be used to regulate user access to studies and templates.
  */
 public class User {
     private String name;
@@ -12,6 +13,8 @@ public class User {
     private String institution;
     private ArrayList<StudyTemplate> studyTemplates;
     private ArrayList conductedStudies;
+
+    public User() {}
 
     public User(String name, String email, String passwordHash, String institution) {
         this.name = name;

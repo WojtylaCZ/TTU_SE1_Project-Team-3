@@ -30,6 +30,30 @@ public class FormItem {
         this.itemValues = null;
     }
 
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String name) {
+        itemName = name;
+    }
+
+    public InputT getItemInput() {
+        return itemInput;
+    }
+
+    public void setItemInput(InputT input) {
+        itemInput = input;
+    }
+
+    public HashMap<String, String> getItemValues() {
+        return itemValues;
+    }
+
+    public void setItemValues(HashMap<String, String> values) {
+        itemValues = values;
+    }
+
     public static InputT getInputT(String input) {
         switch(input) {
             case "Text":
@@ -41,30 +65,6 @@ public class FormItem {
             default:
                 return InputT.TEXT;
         }
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public InputT getItemInput() {
-        return itemInput;
-    }
-
-    public void setItemInput(InputT itemInput) {
-        this.itemInput = itemInput;
-    }
-
-    public HashMap<String,String>  getItemValues() {
-        return itemValues;
-    }
-
-    public void setItemValues(HashMap<String,String>  itemValues) {
-        this.itemValues = itemValues;
     }
 
     @Override

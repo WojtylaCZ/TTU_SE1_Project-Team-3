@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ttu_se1_project_team_3.R;
+import com.ttu_se1_project_team_3.model.AppState;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 
 import java.util.HashMap;
@@ -23,6 +24,7 @@ import java.util.HashMap;
  * for their study.
  */
 public class AddSessionData extends AppCompatActivity {
+    AppState appState;
     StudyTemplate studyTemplate;
     Spinner spinner;
     EditText dataName;
@@ -54,7 +56,8 @@ public class AddSessionData extends AppCompatActivity {
     }
 
     public void getStudyTemplate() {
-        this.studyTemplate = StudyTemplate.getInstance();
+        this.appState = AppState.getInstance();
+        this.studyTemplate = appState.getStudyTemplate();
     }
 
     public void addSessionDataField(View v) {
@@ -66,13 +69,17 @@ public class AddSessionData extends AppCompatActivity {
         content.put("TODO","TODO");
 
         if (studyTemplate.addSessionDataField(inputName, inputType,content))
-            Toast.makeText(AddSessionData.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
+            Toast.makeText(AddSessionData.this, "You've added a Session Data Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionData.this, "That field name already exists.", Toast.LENGTH_LONG).show();
     }
 
+    public void save(View v) {
+
+    }
+
     public void back(View v) {
-        Intent studyTemplate = new Intent(this, CreateStudyTemplatePart.class);
-        startActivity(studyTemplate);
+        Intent sessionLog = new Intent(this, AddSessionLog.class);
+        startActivity(sessionLog);
     }
 }

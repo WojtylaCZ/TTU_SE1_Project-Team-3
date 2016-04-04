@@ -49,11 +49,6 @@
             Change Password
         </activity>
         <activity
-            android:name=".activities.CreateStudyTemplatePart"
-            android:launchMode="singleInstance">
-            Create Study Menu
-        </activity>
-        <activity
             android:name=".activities.TestJSON"
             android:launchMode="singleInstance">
             JSON test activity
