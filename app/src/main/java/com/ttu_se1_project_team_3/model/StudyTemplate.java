@@ -1,7 +1,9 @@
 package com.ttu_se1_project_team_3.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Isaac on 2/27/2016.
@@ -84,6 +86,21 @@ public class StudyTemplate {
         name = null;
         sessionLogFields = new ArrayList<>();
         sessionDataFields = new ArrayList<>();
+    }
+
+    public HashMap<String, String> getInputOptions(String options) {
+        HashMap<String,String> content = new HashMap<>();
+
+        if (options == null || options.compareTo("") == 0) {
+            return content;
+        }
+
+        List<String> splitString = Arrays.asList(options.split(","));
+
+        for (String str : splitString)
+            content.put(str, "1");
+
+        return content;
     }
 
     @Override

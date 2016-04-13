@@ -24,6 +24,7 @@
     <string name="enter_name">Enter Name</string>
     <string name="add_sessionLog">Add Session Log</string>
     <string name="add_sessionData">Add Session Data</string>
+    <string name="enter_items_hint">EX: yes, no, maybe</string>
 
     <string-array name="input_types">
         <item>Text</item>
