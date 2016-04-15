@@ -1,7 +1,9 @@
 package com.ttu_se1_project_team_3.activities;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 
 import com.firebase.client.ChildEventListener;
@@ -14,6 +16,7 @@ import com.ttu_se1_project_team_3.model.AppState;
 import com.ttu_se1_project_team_3.model.SessionDataField;
 import com.ttu_se1_project_team_3.model.SessionLogField;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
+import com.ttu_se1_project_team_3.model.User;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -21,41 +24,42 @@ import java.util.Random;
 public class TestJSON extends AppCompatActivity {
     Firebase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_json);
-        Random rand = new Random();
+    }
 
-        HashMap<String,String> slfName = new HashMap<>();
-        slfName.put("name", "Vojta");
-
-        HashMap<String,String> slfYear = new HashMap<>( );
-        slfYear.put("year", "2016");
-
-        HashMap<String,String> sdfx1 = new HashMap<>();
-        sdfx1.put("male", "0");
-        sdfx1.put("female", "0");
-        sdfx1.put("na", "0");
-
-        HashMap<String,String> sdfx2 = new HashMap<>();
-        sdfx2.put("up", "0");
-        sdfx2.put("down", "0");
-        sdfx2.put("left", "0");
-        sdfx2.put("right", "0");
-
+    public void saveNewTemplateToDB(View v) {
         StudyTemplate studyTemplate = new StudyTemplate();
         studyTemplate.clearTemplate();
-        studyTemplate.setName("Foo");
+        studyTemplate.setName("ZZFoo");
 
-        studyTemplate.addSessionLogField("name", "Text",slfName);
-        studyTemplate.addSessionLogField("year", "Text",slfYear);
+        HashMap<String, String> slfName = new HashMap<>();
+        slfName.put("name", null);
+        studyTemplate.addSessionLogField("name", "Text", slfName);
 
-        studyTemplate.addSessionDataField("gender", "RadioButtons",sdfx1);
-        studyTemplate.addSessionDataField("gestures", "Checkboxes",sdfx2);
+        HashMap<String, String> slfYear = new HashMap<>();
+        slfYear.put("year", null);
+        studyTemplate.addSessionLogField("year", "Text", slfYear);
+
+
+        HashMap<String, String> sdf1 = new HashMap<>();
+        sdf1.put("male", null);
+        sdf1.put("female", null);
+        sdf1.put("na", null);
+        studyTemplate.addSessionDataField("gender", "RadioButtons", sdf1);
+
+
+        HashMap<String, String> sdf2 = new HashMap<>();
+        sdf2.put("up", null);
+        sdf2.put("down", null);
+        sdf2.put("left", null);
+        sdf2.put("right", null);
+        studyTemplate.addSessionDataField("gestures", "Checkboxes", sdf2);
 
         db = DBconn.getInstance().getFbConnection();
-
 
         Firebase templatesRef = db.child("Templates");
 
@@ -65,16 +69,24 @@ public class TestJSON extends AppCompatActivity {
 
         String postKey = newTemplateRef.getKey();
 
-        System.out.println("Just saved template key is: " + postKey);
+        Snackbar.make(v, "Template saved. Key: " + postKey, Snackbar.LENGTH_LONG).show();
+        System.out.println("Template saved. Key: " + postKey);
 
-        db = DBconn.getInstance().getTemplatesQueryConn();
+    }
 
-        Query queryRef = db.orderByKey();
+    public void loadTemplatesFromDB(View v) {
+
+        db = DBconn.getInstance().getFbConnection().child("Templates");
+
+        Query queryRef = db.orderByChild("name");
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 StudyTemplate studyTemplate = snapshot.getValue(StudyTemplate.class);
-                System.out.println(snapshot.getKey() + " is " + studyTemplate.toString());
+                System.out.print(snapshot.getKey() + " is template with: ");
+                System.out.println("Name: " + studyTemplate.getName());
+                System.out.println("SessionLogFields: " + studyTemplate.getSessionLogFields());
+                System.out.println("SessionDataFields: " + studyTemplate.getSessionDataFields());
             }
 
             @Override
@@ -97,9 +109,94 @@ public class TestJSON extends AppCompatActivity {
 
             }
         });
+        Snackbar.make(v, "All templates loaded. ", Snackbar.LENGTH_LONG).show();
+
+    }
+
+    public void saveConductedStudy(View v) {
+        StudyTemplate studyTemplate = new StudyTemplate();
+        studyTemplate.clearTemplate();
+        studyTemplate.setName("ZZFoo");
+
+
+        HashMap<String, String> slfName = new HashMap<>();
+        slfName.put("name", "Vodka");
+        studyTemplate.addSessionLogField("name", "Text", slfName);
+
+        HashMap<String, String> slfYear = new HashMap<>();
+        slfYear.put("year", "1990");
+        studyTemplate.addSessionLogField("year", "Text", slfYear);
+
+        HashMap<String, String> sdfx1 = new HashMap<>();
+        sdfx1.put("male", "1");
+        sdfx1.put("female", "0");
+        sdfx1.put("na", "0");
+        studyTemplate.addSessionDataField("gender", "RadioButtons", sdfx1);
+
+        HashMap<String, String> sdfx2 = new HashMap<>();
+        sdfx2.put("up", "1");
+        sdfx2.put("down", "0");
+        sdfx2.put("left", "1");
+        sdfx2.put("right", "0");
+        studyTemplate.addSessionDataField("gestures", "Checkboxes", sdfx2);
+
+
+        db = DBconn.getInstance().getFbConnection();
+
+        Firebase conductedStudyRef = db.child("conductedStudies/"+ User.getInstance().getFbUid());
+
+        Firebase newConStudyRef = conductedStudyRef.push();
+
+        newConStudyRef.setValue(studyTemplate);
+
+        String postKey = newConStudyRef.getKey();
+
+        Snackbar.make(v, "Conducted study saved. Key: " + postKey, Snackbar.LENGTH_LONG).show();
+        System.out.println("Conducted study saved. Key: " + postKey);
+
 
 
     }
 
 
+
+
+    public void loadUsersStudies(View v) {
+
+        db = DBconn.getInstance().getFbConnection().child("conductedStudies/"+ User.getInstance().getFbUid());
+
+        Query queryRef = db.orderByKey();
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChild) {
+
+                System.out.println("Conducted Study ID: " + snapshot.getKey());
+                StudyTemplate study = snapshot.getValue(StudyTemplate.class);
+                System.out.println("Conducted Study: " + study);
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+        Snackbar.make(v, "All templates loaded. ", Snackbar.LENGTH_LONG).show();
+
+    }
 }
