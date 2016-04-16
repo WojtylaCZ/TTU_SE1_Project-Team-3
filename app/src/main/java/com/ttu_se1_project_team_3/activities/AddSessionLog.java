@@ -68,9 +68,8 @@ public class AddSessionLog extends AppCompatActivity {
         String inputName = logName.getText().toString();
         HashMap<String,String> content = new HashMap<>();
 
-        if (inputType.compareTo("Text") != 0) {
+        if (inputType.compareTo("Text") != 0)
             content = studyTemplate.getInputOptions(logContent.getText().toString());
-        }
 
         if (studyTemplate.addSessionLogField(inputName, inputType,content))
             Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
