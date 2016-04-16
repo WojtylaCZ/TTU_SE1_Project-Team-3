@@ -14,24 +14,22 @@ public class DBconn {
 
     private final static String DB_LOCATION = "https://pless.firebaseio.com/";
 
-    private static DBconn ourInstance = new DBconn();
+    private static DBconn instance = null;
     private Firebase fbConnection;
 
     public static DBconn getInstance() {
-        return ourInstance;
+        if (instance == null) {
+            instance = new DBconn();
+        }
+        return instance;
     }
 
-    public DBconn() {
+    private DBconn() {
         fbConnection = new Firebase(DB_LOCATION);
     }
 
     public Firebase getFbConnection() {
         return fbConnection;
-    }
-
-    public Firebase getTemplatesQueryConn() {
-        return fbConnection.child("Templates");
-
     }
 
 
