@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.ttu_se1_project_team_3.R;
 import com.ttu_se1_project_team_3.model.AppState;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
@@ -28,6 +29,8 @@ public class AddSessionData extends AppCompatActivity {
     StudyTemplate studyTemplate;
     Spinner spinner;
     EditText dataName;
+    EditText dataContent;
+    Firebase fireDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class AddSessionData extends AppCompatActivity {
         getStudyTemplate();
 
         dataName = (EditText) findViewById(R.id.session_data_name);
+        dataContent = (EditText) findViewById(R.id.session_data_content);
 
         spinner = (Spinner) findViewById(R.id.type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -63,10 +67,10 @@ public class AddSessionData extends AppCompatActivity {
     public void addSessionDataField(View v) {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = dataName.getText().toString();
-
-        //@TODO UI for value inputs
         HashMap<String,String> content = new HashMap<>();
-        content.put("TODO","TODO");
+
+        if (inputType.compareTo("Text") != 0)
+            content = studyTemplate.getInputOptions(dataContent.getText().toString());
 
         if (studyTemplate.addSessionDataField(inputName, inputType,content))
             Toast.makeText(AddSessionData.this, "You've added a Session Data Field.", Toast.LENGTH_LONG).show();
@@ -75,7 +79,13 @@ public class AddSessionData extends AppCompatActivity {
     }
 
     public void save(View v) {
+        fireDB = DBconn.getInstance().getFbConnection();
 
+        Firebase templatesRef = fireDB.child("Templates");
+        Firebase newTemplateRef = templatesRef.push();
+        newTemplateRef.setValue(studyTemplate);
+        String postKey = newTemplateRef.getKey();
+        Toast.makeText(AddSessionData.this, postKey, Toast.LENGTH_LONG).show();
     }
 
     public void back(View v) {

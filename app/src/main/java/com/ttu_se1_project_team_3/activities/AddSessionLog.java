@@ -29,6 +29,7 @@ public class AddSessionLog extends AppCompatActivity {
     StudyTemplate studyTemplate;
     Spinner spinner;
     EditText logName;
+    EditText logContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class AddSessionLog extends AppCompatActivity {
         getStudyTemplate();
 
         logName = (EditText) findViewById(R.id.session_log_name);
+        logContent = (EditText) findViewById(R.id.session_log_content);
 
         spinner = (Spinner) findViewById(R.id.type_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -64,10 +66,10 @@ public class AddSessionLog extends AppCompatActivity {
     public void addSessionLogField(View v) {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = logName.getText().toString();
-
-        //@TODO UI for value inputs
         HashMap<String,String> content = new HashMap<>();
-        content.put("TODO","TODO");
+
+        if (inputType.compareTo("Text") != 0)
+            content = studyTemplate.getInputOptions(logContent.getText().toString());
 
         if (studyTemplate.addSessionLogField(inputName, inputType,content))
             Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
