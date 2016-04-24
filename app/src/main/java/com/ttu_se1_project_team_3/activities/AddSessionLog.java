@@ -68,6 +68,16 @@ public class AddSessionLog extends AppCompatActivity {
         String inputName = logName.getText().toString();
         HashMap<String,String> content = new HashMap<>();
 
+        if (logName.length() == 0 || logContent.length() == 0) {
+            if (logName.length() == 0)
+                logName.setError("You must provide a name.");
+
+            if (logContent.length() == 0)
+                logContent.setError("You must provide content for this field.");
+
+            return;
+        }
+
         if (inputType.compareTo("Text") != 0)
             content = studyTemplate.getInputOptions(logContent.getText().toString());
 
