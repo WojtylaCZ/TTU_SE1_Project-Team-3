@@ -16,6 +16,5 @@ public class SessionLogField extends FormItem {
         this.itemName = name;
         this.itemInput = getInputT(inputType);
         this.itemValues = values;
-
     }
 }
