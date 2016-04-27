@@ -18,4 +18,6 @@ public class SessionLogField extends FormItem {
         this.itemValues = values;
 
     }
+
+
 }

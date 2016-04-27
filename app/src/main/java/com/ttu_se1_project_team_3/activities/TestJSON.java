@@ -17,8 +17,12 @@ import com.ttu_se1_project_team_3.model.SessionDataField;
 import com.ttu_se1_project_team_3.model.SessionLogField;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 import com.ttu_se1_project_team_3.model.User;
+import com.ttu_se1_project_team_3.model.jsontocsv.parser.JsonFlattener;
+import com.ttu_se1_project_team_3.model.jsontocsv.writer.CSVWriter;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class TestJSON extends AppCompatActivity {
@@ -87,6 +91,8 @@ public class TestJSON extends AppCompatActivity {
                 System.out.println("Name: " + studyTemplate.getName());
                 System.out.println("SessionLogFields: " + studyTemplate.getSessionLogFields());
                 System.out.println("SessionDataFields: " + studyTemplate.getSessionDataFields());
+
+
             }
 
             @Override
@@ -196,7 +202,67 @@ public class TestJSON extends AppCompatActivity {
 
             }
         });
-        Snackbar.make(v, "All templates loaded. ", Snackbar.LENGTH_LONG).show();
+        Snackbar.make(v, "All studies loaded. ", Snackbar.LENGTH_LONG).show();
 
+        System.out.println("OK");
+        JsonFlattener parser = new JsonFlattener();
+
+        CSVWriter writer = new CSVWriter();
+
+
+        List<Map<String, String>> flatJson = null;
+        try {
+            flatJson = parser.parseJson(jsonValue());
+            System.out.println(writer.writeAsCSV(flatJson, "sample.csv"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("END");
+
+
+    }
+
+
+    private static String jsonValue() {
+        return "[\n" +
+                "    {\n" +
+                "        \"studentName\": \"Foo\",\n" +
+                "        \"Age\": \"12\",\n" +
+                "        \"subjects\": [\n" +
+                "            {\n" +
+                "                \"name\": \"English\",\n" +
+                "                \"marks\": \"40\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"name\": \"History\",\n" +
+                "                \"marks\": \"50\"\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"studentName\": \"Bar\",\n" +
+                "        \"Age\": \"12\",\n" +
+                "        \"subjects\": [\n" +
+                "            {\n" +
+                "                \"name\": \"English\",\n" +
+                "                \"marks\": \"40\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"name\": \"History\",\n" +
+                "                \"marks\": \"50\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"name\": \"Science\",\n" +
+                "                \"marks\": \"40\"\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"studentName\": \"Baz\",\n" +
+                "        \"Age\": \"12\",\n" +
+                "        \"subjects\": []\n" +
+                "    }\n" +
+                "]";
     }
 }
