@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/itemtype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="20dp"
+        android:text="Log Fragment"/>
+
+    <TextView
+        android:id="@+id/ItemName"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/itemtype"
+        android:layout_height="wrap_content"
+        android:text="test_text"/>
+
+    <TextView
+        android:id="@+id/LogItemName"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/ItemName"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="log_name_holder"/>
+
+    <EditText
+        android:id="@+id/log_text_entry"
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LogItemName" />
+
+    <RadioGroup
+        android:id="@+id/log_button_group"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/LogItemName"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/log_checkbox_group"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/LogItemName"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

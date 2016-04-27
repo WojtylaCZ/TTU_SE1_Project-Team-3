@@ -14,14 +14,16 @@ import java.util.HashMap;
  */
 public class FormItem {
 
+    public String inputStyle;
     public String itemName;
     public InputT itemInput;
     public HashMap<String,String> itemValues;
 
     public FormItem() {
-        this.itemName = null;
-        this.itemInput = null;
-        this.itemValues = null;
+//        this.inputStyle = null;
+//        this.itemName = null;
+//        this.itemInput = null;
+//        this.itemValues = null;
     }
 
     public String getItemName() {
@@ -31,6 +33,8 @@ public class FormItem {
     public void setItemName(String name) {
         itemName = name;
     }
+
+    public void setInputStyle(String input) {inputStyle = input; }
 
     public InputT getItemInput() {
         return itemInput;
