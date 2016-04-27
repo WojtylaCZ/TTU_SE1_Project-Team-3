@@ -69,6 +69,16 @@ public class AddSessionData extends AppCompatActivity {
         String inputName = dataName.getText().toString();
         HashMap<String,String> content = new HashMap<>();
 
+        if (dataName.length() == 0 || dataContent.length() == 0) {
+            if (dataName.length() == 0)
+                dataName.setError("You must provide a name.");
+
+            if (dataContent.length() == 0)
+                dataContent.setError("You must provide content for this field.");
+
+            return;
+        }
+
         if (inputType.compareTo("Text") != 0)
             content = studyTemplate.getInputOptions(dataContent.getText().toString());
 

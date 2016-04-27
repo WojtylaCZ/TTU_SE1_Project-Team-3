@@ -12,12 +12,6 @@ import java.util.HashMap;
  * that are shared by both SessionLogFields (which are filled out before
  * a study is conducted) and SessionDataField (which are the study questions).
  */
-
-enum InputT {
-    TEXT, CHECKBOXES, RADIOBUTTONS
-}
-
-
 public class FormItem {
 
     public String itemName;
