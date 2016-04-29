@@ -43,18 +43,21 @@ public class Login extends AppCompatActivity {
 
     //https://www.firebase.com/docs/android/guide/user-auth.html
     public void login(View v) {
-        db = DBconn.getInstance().getFbConnection();
-
-        final String email = enter_email.getText().toString();
-        String password = enter_password.getText().toString();
-
-        db.authWithPassword(email, password, new Firebase.AuthResultHandler() {
-            @Override
-            public void onAuthenticated(AuthData authData) {
-                System.out.println("User successfully authenticated with User ID: " + authData.getUid());
-                User user = User.getInstance();
-                user.setEmail(email);
-                user.setFbUid(authData.getUid());
+        Intent home = new Intent(Login.this, Homepage.class);
+        startActivity(home);
+        return;
+//        db = DBconn.getInstance().getFbConnection();
+//
+//        final String email = enter_email.getText().toString();
+//        String password = enter_password.getText().toString();
+//
+//        db.authWithPassword(email, password, new Firebase.AuthResultHandler() {
+//            @Override
+//            public void onAuthenticated(AuthData authData) {
+//                System.out.println("User successfully authenticated with User ID: " + authData.getUid());
+//                User user = User.getInstance();
+//                user.setEmail(email);
+//                user.setFbUid(authData.getUid());
 
                 //VOJTA: I am not sure if we will need to use or not, but it is prepared here
                 //https://www.firebase.com/docs/android/guide/user-auth.html#section-storing
@@ -63,19 +66,19 @@ public class Login extends AppCompatActivity {
 //                db.child("users").child(authData.getUid()).setValue(map);
 
 
-
-                Toast.makeText(Login.this, "Success.", Toast.LENGTH_LONG).show();
-                Intent home = new Intent(Login.this, Homepage.class);
-                startActivity(home);
-
-            }
-
-            @Override
-            public void onAuthenticationError(FirebaseError firebaseError) {
-                System.err.println(firebaseError.toString());
-                Toast.makeText(Login.this, "Wrong email or password.", Toast.LENGTH_LONG).show();
-            }
-        });
+//
+//                Toast.makeText(Login.this, "Success.", Toast.LENGTH_LONG).show();
+//                Intent home = new Intent(Login.this, Homepage.class);
+//                startActivity(home);
+//
+//            }
+//
+//            @Override
+//            public void onAuthenticationError(FirebaseError firebaseError) {
+//                System.err.println(firebaseError.toString());
+//                Toast.makeText(Login.this, "Wrong email or password.", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
 
     }

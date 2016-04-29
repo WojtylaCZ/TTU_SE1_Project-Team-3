@@ -16,8 +16,9 @@ public class ConductStudy extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conduct_study);
         templateName = getIntent().getStringExtra("Selected");
+        setContentView(R.layout.activity_conduct_study);
+        //templateName = getIntent().getStringExtra("Selected");
 
         //name = (TextView) findViewById(R.id.studyName);
         //name.setText(templateName);
