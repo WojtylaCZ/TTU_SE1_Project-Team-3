@@ -18,5 +18,18 @@
         android:onClick="go_to_homepage"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/to_homepage_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="85dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="175dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/pless_icon"/>
 
 </RelativeLayout>

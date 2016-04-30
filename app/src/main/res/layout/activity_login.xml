@@ -9,7 +9,7 @@
         android:layout_height="@dimen/text_input_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:hint="@string/username" />
+        android:hint="@string/email" />
 
     <EditText
         android:id="@+id/enter_password"

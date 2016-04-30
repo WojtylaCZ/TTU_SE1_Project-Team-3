@@ -14,7 +14,7 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         android:onClick="goToLogin"
         android:text="@string/login" />
 
@@ -23,7 +23,7 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="225dp"
+        android:layout_marginTop="300dp"
         android:onClick="goToCreateAccount"
         android:text="@string/create_account" />
 
@@ -32,9 +32,16 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="400dp"
         android:onClick="goToTestJSON"
         android:text="TEST" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="175dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/pless_icon"/>
+
 
 
 </RelativeLayout>
