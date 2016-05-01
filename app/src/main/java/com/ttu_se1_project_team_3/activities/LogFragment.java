@@ -42,36 +42,34 @@ import java.util.HashMap;
 
 
 public class LogFragment extends Fragment {
-    private String LogItemName;
     private TextView textname;
     private TextView LogName;
     private String ItemInput;
-    private ArrayList<SessionDataField> logfields;
-    private int tempnum = 0;
+    private ArrayList<SessionLogField> logfields;
     private int currentField = 0;
     private ArrayList<StudyTemplate> templates = new ArrayList<StudyTemplate>();
     private StudyTemplate current;
     private Firebase db;
     private EditText Log_Input;
     private RadioGroup group;
-    private CheckBox[] Log_Box;
-    int[] tester = {0, 1, 2};
+    private CheckBox Log_Box;
     private String selectedStudy = ConductStudy.templateName;
     private RelativeLayout rlayout;
     private HashMap<String, String> input_items_list;
     private ArrayList<String> RC_items;
+    private LinearLayout llayout;
 
     /**
      * Creates the new EditText based on the Input Type of current LogItem
      */
     public void createEditText() {
         Log_Input = new EditText(this.getContext());
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.BELOW, R.id.LogItemName);
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        params.setMargins(0, 30, 0, 0);
+        Log_Input.setWidth(250);
         Log_Input.setLayoutParams(params);
-        Log_Input.setGravity(Gravity.CENTER_HORIZONTAL);
-        Log_Input.setWidth(150);
-        Log_Input.setHeight(40);
         rlayout.addView(Log_Input);
     }
 
@@ -98,18 +96,16 @@ public class LogFragment extends Fragment {
      * Creates the new CheckBox Group based on the Input Type of current LogItem
      */
     public void createCheckboxGroup(ArrayList<String> options) {
-        Log_Box = new CheckBox[options.size()];
+        llayout.setVisibility(getView().VISIBLE);
         for(int i = 0; i < options.size(); i++) {
-            RelativeLayout.LayoutParams  params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            Log_Box[i] = new CheckBox(this.getContext());
-            Log_Box[i].setLayoutParams(params);
-            Log_Box[i].setId(i);
-            Log_Box[i].setText(options.get(i));
-            Log_Box[i].setGravity(Gravity.CENTER_HORIZONTAL);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+            Log_Box = new CheckBox(this.getContext());
+            Log_Box.setId(i);
+            Log_Box.setText(options.get(i));
+            llayout.addView(Log_Box, params);
         }
-        for(int i = 0; i < options.size(); i++) {
-            rlayout.addView(Log_Box[i]);
-        }
+
+
     }
 
     public void loadTemplatesFromDB(ChildEventListener listener) {
@@ -129,18 +125,15 @@ public class LogFragment extends Fragment {
 
 
         //Initializations for all xml objects
+
+        llayout = (LinearLayout) view.findViewById(R.id.log_lin_layout);
+        llayout.setVisibility(view.GONE);
         rlayout = (RelativeLayout) view.findViewById(R.id.fragment_layout);
         textname = (TextView) view.findViewById(R.id.ItemName);
         LogName = (TextView) view.findViewById(R.id.LogItemName);
-        //Log_Input = (EditText) view.findViewById(R.id.log_text_entry);
-        //Log_Radio = (RadioGroup) view.findViewById(R.id.log_button_group);
-        //Log_Box = (CheckBox) view.findViewById(R.id.log_checkbox_group);
-
-
-        //setting all to invisible until they're needed
-        //Log_Input.setVisibility(view.GONE);
-        //Log_Radio.setVisibility(view.GONE);
-        //Log_Box.setVisibility(view.GONE);
+        group = new RadioGroup(this.getContext());
+        Log_Box = new CheckBox(this.getContext());
+        Log_Input = new EditText(this.getContext());
 
 
         /**
@@ -158,16 +151,50 @@ public class LogFragment extends Fragment {
 
                             current = templates.get(i);
                             textname.setText(current.getName());
-                            logfields = current.getSessionDataFields();
+                            logfields = current.getSessionLogFields();
                             LogName.setText(logfields.get(currentField).getItemName());
                             ItemInput = String.valueOf(logfields.get(currentField).getItemInput());
                             input_items_list = logfields.get(currentField).getItemValues();
-                            RC_items = new ArrayList<String>(input_items_list.keySet());
-                            System.out.println(RC_items.toString() + "owls");
-                            System.out.println(ItemInput + "owls");
+                            if(input_items_list != null) {
+                                RC_items = new ArrayList<String>(input_items_list.keySet());
+                            }
+                            //System.out.println(RC_items.toString() + "owls");// for testing
+                            //System.out.println(ItemInput + "owls");// for testing
+
+
+                            }
+                        }
+
+                        /**
+                         * Inital input of
+                         */
+                    if (ItemInput != null) {
+                        if (ItemInput.equals("TEXT")) {
+                            rlayout.removeView(Log_Input);
+                            createEditText();
+                            System.out.println("Tempnum 0");
+                            group.removeAllViews();
+                            llayout.removeAllViews();
+                            llayout.setVisibility(getView().GONE);
+                        } else if (ItemInput.equals("RADIOBUTTONS")) {
+                            System.out.println("Tempnum 1");
+                            llayout.removeAllViews();
+                            if(RC_items != null) {
+                                createRadioGroup(RC_items);
+                            }
+                            Log_Input.setVisibility(view.GONE);
+                        } else if (ItemInput.equals("CHECKBOXES")) {
+                            System.out.println("Tempnum 2");
+                            group.removeAllViews();
+                            if(RC_items != null) {
+                                createCheckboxGroup(RC_items);
+                            }
+                            Log_Input.setVisibility(view.GONE);
+
                         }
                     }
                 }
+
                 System.out.print(snapshot.getKey() + " is template with: ");
                 System.out.println("Name: " + studyTemplate.getName());
                 System.out.println("SessionLogFields: " + studyTemplate.getSessionLogFields());
@@ -198,22 +225,7 @@ public class LogFragment extends Fragment {
             }
         });
 
-    if(ItemInput != null) {
-        if (ItemInput.equals("TEXT")) {
-            System.out.println("Tempnum 0");
-            createEditText();
-            //Log_Input.setVisibility(view.VISIBLE);
-            group.removeAllViews();
-        } else if (ItemInput.equals("RADIOBUTTONS")) {
-            System.out.println("Tempnum 1");
-            createRadioGroup(RC_items);
-            Log_Input.setVisibility(view.GONE);
-        } else if (ItemInput.equals("CHECKBOXES")) {
-            System.out.println("Tempnum 2");
-            createCheckboxGroup(RC_items);
-            group.removeAllViews();
-        }
-    }
+
 
         /**
          * Detectes swipe getures in fragment and responds depending on the direction of the gesture.
@@ -242,12 +254,11 @@ public class LogFragment extends Fragment {
 
                 try {
                     if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH) {
-
                         return false;
                     }
                     if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
                             && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                        if(currentField < logfields.size()){
+                        if(currentField < logfields.size() - 1){
                             currentField++;
                             LogName.setText(logfields.get(currentField).getItemName());
                             ItemInput = String.valueOf(logfields.get(currentField).getItemInput());
@@ -255,20 +266,29 @@ public class LogFragment extends Fragment {
                             RC_items = new ArrayList<String>(input_items_list.keySet());
                             System.out.println(ItemInput + ": water");
                             if(ItemInput.equals("TEXT")) {
+                                rlayout.removeView(Log_Input);
                                 group.removeAllViews();
                                 createEditText();
+                                llayout.removeAllViews();
+                                llayout.setVisibility(getView().GONE);
                                 System.out.println("Tempnum 0");
 
                             }
                             else if(ItemInput.equals("RADIOBUTTONS")) {
                                 System.out.println("Tempnum 1");
-                                createRadioGroup(RC_items);
+                                if(RC_items != null) {
+                                    createRadioGroup(RC_items);
+                                }
+                                llayout.removeAllViews();
+                                llayout.setVisibility(getView().GONE);
                                 Log_Input.setVisibility(view.GONE);
                             }
                             else if(ItemInput.equals("CHECKBOXES")) {
                                 System.out.println("Tempnum 2");
                                 group.removeAllViews();
-                                createCheckboxGroup(RC_items);
+                                if(RC_items != null) {
+                                    createCheckboxGroup(RC_items);
+                                }
                                 Log_Input.setVisibility(view.GONE);
                             }
                         }
@@ -282,21 +302,29 @@ public class LogFragment extends Fragment {
                             ItemInput = String.valueOf(logfields.get(currentField).getItemInput());
                             input_items_list = logfields.get(currentField).getItemValues();
                             RC_items = new ArrayList<String>(input_items_list.keySet());
-                            System.out.println(ItemInput + ": water");
+                            System.out.println(ItemInput + ": water" + currentField);
                             if(ItemInput.equals("TEXT")) {
+                                rlayout.removeView(Log_Input);
+                                createEditText();
                                 System.out.println("Tempnum 0");
                                 group.removeAllViews();
-                                createEditText();
+                                llayout.removeAllViews();
+                                llayout.setVisibility(getView().GONE);
                             }
                             else if(ItemInput.equals("RADIOBUTTONS")) {
                                 System.out.println("Tempnum 1");
-                                createRadioGroup(RC_items);
+                                llayout.removeAllViews();
+                                if(RC_items != null) {
+                                    createRadioGroup(RC_items);
+                                }
                                 Log_Input.setVisibility(view.GONE);
                             }
                             else if(ItemInput.equals("CHECKBOXES")) {
                                 System.out.println("Tempnum 2");
                                 group.removeAllViews();
-                                createCheckboxGroup(RC_items);
+                                if(RC_items != null) {
+                                    createCheckboxGroup(RC_items);
+                                }
                                 Log_Input.setVisibility(view.GONE);
 
                             }

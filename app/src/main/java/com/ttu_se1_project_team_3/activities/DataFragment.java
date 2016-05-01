@@ -1,8 +1,12 @@
 package com.ttu_se1_project_team_3.activities;
 
+import android.app.ActionBar;
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,25 +30,79 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.OptionalDataException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataFragment extends Fragment {
+
     private TextView data_item_name;
     private EditText data_text_input;
     private RadioGroup data_radio_group;
     private CheckBox data_box;
     private Firebase db;
-    private int tempnum = 0;
+    private String ItemInput;
+    private int currentField = 0;
     private ArrayList<StudyTemplate> templates = new ArrayList<StudyTemplate>();
     private StudyTemplate current;
     private ArrayList<SessionDataField> datafields;
     private String dataitemname;
     private String selectedStudy = ConductStudy.templateName;
+    private HashMap<String, String> data_item_list;
+    private ArrayList<String> DC_items;
+    private LinearLayout dllayout;
+    private RelativeLayout drlayout;
+    private Button saveButton;
+
+
+
+    private void createEditText() {
+        data_text_input = new EditText(this.getContext());
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.BELOW, R.id.data_item_names);
+        params.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        params.setMargins(0, 30, 0, 0);
+        data_text_input.setWidth(250);
+        data_text_input.setLayoutParams(params);
+        drlayout.addView(data_text_input);
+    }
+
+    public void createRadioGroup(ArrayList<String> options) {
+        RelativeLayout.LayoutParams  params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.BELOW, R.id.data_item_names);
+        data_radio_group = new RadioGroup(this.getContext());
+        data_radio_group.setLayoutParams(params);
+        for(int i = 0; i < options.size(); i++) {
+            RadioButton btn = new RadioButton(this.getContext());
+            btn.setId(i);
+            btn.setText(options.get(i));
+            data_radio_group.addView(btn);
+        }
+
+        data_radio_group.setGravity(Gravity.CENTER_HORIZONTAL);
+        drlayout.addView(data_radio_group);
+    }
+
+    public void createCheckboxGroup(ArrayList<String> options) {
+        dllayout.setVisibility(getView().VISIBLE);
+        for(int i = 0; i < options.size(); i++) {
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.MATCH_PARENT);
+            data_box = new CheckBox(this.getContext());
+            data_box.setId(i);
+            data_box.setText(options.get(i));
+            dllayout.addView(data_box, params);
+        }
+    }
 
 
 
@@ -64,14 +122,20 @@ public class DataFragment extends Fragment {
 
         /// initializatons for variables
         data_item_name = (TextView) view.findViewById(R.id.data_item_names);
-        data_text_input = (EditText) view.findViewById(R.id.data_text_entry);
-        data_radio_group = (RadioGroup) view.findViewById(R.id.data_button_group);
-        data_box = (CheckBox) view.findViewById(R.id.data_checkbox_group);
-
-        data_text_input.setVisibility(view.GONE);
-        data_radio_group.setVisibility(view.GONE);
-        data_box.setVisibility(view.GONE);
-
+        dllayout = (LinearLayout) view.findViewById(R.id.data_fragment_linear);
+        drlayout = (RelativeLayout) view.findViewById(R.id.data_frag_relative);
+        saveButton = (Button) view.findViewById(R.id.saveButton);
+        data_radio_group = new RadioGroup(this.getContext());
+        data_text_input = new EditText(this.getContext());
+        data_box = new CheckBox(this.getContext());
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent conductStud = new Intent(getContext(), Homepage.class);
+                Toast.makeText(getActivity(), "Saved", Toast.LENGTH_SHORT).show();
+                startActivity(conductStud);
+            }
+        });
 
 
         /**
@@ -82,15 +146,47 @@ public class DataFragment extends Fragment {
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 StudyTemplate studyTemplate = snapshot.getValue(StudyTemplate.class);
                 templates.add(studyTemplate);
-                if (templates.size() > 0) {
+                if (templates.size() > 1) {
                     data_item_name.setText(selectedStudy);
                     for (int i = 0; i < templates.size(); i++) {
                         if (templates.get(i).getName().equals(selectedStudy)) {
                             current = templates.get(i);
                             data_item_name.setText(current.getName());
-                            datafields = templates.get(i).getSessionDataFields();
-                            data_item_name.setText(datafields.get(0).getItemName());
-                            //ItemInput = logfields.get(tempnum).getItemInput();
+                            datafields = current.getSessionDataFields();
+                            ItemInput = String.valueOf(datafields.get(currentField).getItemInput());
+                            data_item_name.setText(datafields.get(currentField).getItemName());
+                            data_item_list = datafields.get(currentField).getItemValues();
+                            if (data_item_list != null) {
+                                DC_items = new ArrayList<String>(data_item_list.keySet());
+                            }
+
+                        }
+                    }
+                    if (ItemInput != (null)) {
+                        if (ItemInput.equals("TEXT")) {
+                            drlayout.removeView(data_text_input);
+                            data_radio_group.removeAllViews();
+                            createEditText();
+                            dllayout.removeAllViews();
+                            dllayout.setVisibility(getView().GONE);
+                            System.out.println("Tempnum 0");
+
+                        } else if (ItemInput.equals("RADIOBUTTONS")) {
+                            System.out.println("Tempnum 1");
+                            data_radio_group.removeAllViews();
+                            if (DC_items != null) {
+                                createRadioGroup(DC_items);
+                            }
+                            dllayout.removeAllViews();
+                            dllayout.setVisibility(getView().GONE);
+                            data_text_input.setVisibility(view.GONE);
+                        } else if (ItemInput.equals("CHECKBOXES")) {
+                            System.out.println("Tempnum 2");
+                            data_radio_group.removeAllViews();
+                            if (DC_items != null) {
+                                createCheckboxGroup(DC_items);
+                            }
+                            data_text_input.setVisibility(view.GONE);
                         }
                     }
                 }
@@ -124,6 +220,7 @@ public class DataFragment extends Fragment {
             }
         });
 
+
         final GestureDetector gestures = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {
@@ -142,56 +239,81 @@ public class DataFragment extends Fragment {
                     }
                     if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
                             && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                        if(tempnum < datafields.size()){
-                            tempnum++;
-                            System.out.println(tempnum + "woot");
-                            dataitemname = datafields.get(tempnum).getItemName();
+                        if(currentField < (datafields.size() - 1)){
+                            currentField++;
+                            System.out.println("woot" + currentField);
+                            ItemInput = String.valueOf(datafields.get(currentField).getItemInput());
+                            data_item_list = datafields.get(currentField).getItemValues();
+                            dataitemname = datafields.get(currentField).getItemName();
+                            DC_items = new ArrayList<String>(data_item_list.keySet());
                             data_item_name.setText(dataitemname);
-                            if(tempnum == 0) {
+                            if(ItemInput.equals("TEXT")) {
+                                drlayout.removeView(data_text_input);
+                                data_radio_group.removeAllViews();
+                                createEditText();
+                                dllayout.removeAllViews();
+                                dllayout.setVisibility(getView().GONE);
                                 System.out.println("Tempnum 0");
-                                data_text_input.setVisibility(view.VISIBLE);
-                                data_radio_group.setVisibility(view.GONE);
-                                data_box.setVisibility(view.GONE);
+
                             }
-                            else if(tempnum == 1) {
+                            else if(ItemInput.equals("RADIOBUTTONS")) {
                                 System.out.println("Tempnum 1");
+                                if(DC_items != null) {
+                                    createRadioGroup(DC_items);
+                                }
+                                dllayout.removeAllViews();
+                                dllayout.setVisibility(getView().GONE);
                                 data_text_input.setVisibility(view.GONE);
-                                data_radio_group.setVisibility(view.VISIBLE);
-                                data_box.setVisibility(view.GONE);
                             }
-                            else if(tempnum == 2) {
+                            else if(ItemInput.equals("CHECKBOXES")) {
                                 System.out.println("Tempnum 2");
+                                dllayout.removeAllViews();
+                                data_radio_group.removeAllViews();
+                                if(DC_items != null) {
+                                    createCheckboxGroup(DC_items);
+                                }
                                 data_text_input.setVisibility(view.GONE);
-                                data_radio_group.setVisibility(view.GONE);
-                                data_box.setVisibility(view.VISIBLE);
                             }
                         }
                         //Toast.makeText(getActivity(), "Right to Left", Toast.LENGTH_LONG).show();
                     }
                     else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
                             && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                        if(tempnum > 0) {
-                            tempnum--;
-                            if(tempnum == 0) {
-                                System.out.println("Tempnum 0");
-                                data_text_input.setVisibility(view.VISIBLE);
-                                data_radio_group.setVisibility(view.GONE);
-                                data_box.setVisibility(view.GONE);
-                            }
-                            else if(tempnum == 1) {
-                                System.out.println("Tempnum 1");
-                                data_text_input.setVisibility(view.GONE);
-                                data_radio_group.setVisibility(view.VISIBLE);
-                                data_box.setVisibility(view.GONE);
-                            }
-                            else if(tempnum == 2) {
-                                System.out.println("Tempnum 2");
-                                data_text_input.setVisibility(view.GONE);
-                                data_radio_group.setVisibility(view.GONE);
-                                data_box.setVisibility(view.VISIBLE);
-                            }
-                            dataitemname = datafields.get(tempnum).getItemName();
+                        if(currentField > 0) {
+                            currentField--;
+                            ItemInput = String.valueOf(datafields.get(currentField).getItemInput());
+                            data_item_list = datafields.get(currentField).getItemValues();
+                            dataitemname = datafields.get(currentField).getItemName();
+                            DC_items = new ArrayList<String>(data_item_list.keySet());
                             data_item_name.setText(dataitemname);
+                            System.out.println("woot " + currentField);
+                            if(ItemInput.equals("TEXT")) {
+                                drlayout.removeView(data_text_input);
+                                data_radio_group.removeAllViews();
+                                createEditText();
+                                dllayout.removeAllViews();
+                                dllayout.setVisibility(getView().GONE);
+                                System.out.println("Tempnum 0");
+
+                            }
+                            else if(ItemInput.equals("RADIOBUTTONS")) {
+                                System.out.println("Tempnum 1");
+                                dllayout.removeAllViews();
+                                if(DC_items != null) {
+                                    createRadioGroup(DC_items);
+                                }
+                                dllayout.setVisibility(getView().GONE);
+                                data_text_input.setVisibility(view.GONE);
+                            }
+                            else if(ItemInput.equals("CHECKBOXES")) {
+                                System.out.println("Tempnum 2");
+                                data_radio_group.removeAllViews();
+                                if(DC_items != null) {
+                                    createCheckboxGroup(DC_items);
+                                }
+                                data_text_input.setVisibility(view.GONE);
+                            }
+
                         }
                         //Toast.makeText(getActivity(), "Left to Right", Toast.LENGTH_LONG).show();
                     }
@@ -212,9 +334,12 @@ public class DataFragment extends Fragment {
 
 
 
+
         return view;
 
 
     }
+
+
 
 }
