@@ -62,6 +62,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/data_item_names"
         android:id="@+id/data_fragment_linear"
         android:gravity="center_horizontal"

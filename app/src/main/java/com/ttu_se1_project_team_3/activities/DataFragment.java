@@ -1,7 +1,6 @@
 package com.ttu_se1_project_team_3.activities;
 
 import android.app.ActionBar;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -20,16 +18,6 @@ import com.firebase.client.Query;
 import com.ttu_se1_project_team_3.R;
 import com.ttu_se1_project_team_3.model.SessionDataField;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
-
-/**
- * Created by ryanberg on 4/19/16.
- */
-
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -39,10 +27,17 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.OptionalDataException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+/**
+ * Created by ryanberg on 4/19/16.
+ * DataFragment pulls and displays the data inputs from firebase and dynamically creates the output
+ * the user to display
+ *
+ * This Class needs to be reworked it is far too long. (Ryan Berg)
+ */
+
 
 public class DataFragment extends Fragment {
 
@@ -65,7 +60,10 @@ public class DataFragment extends Fragment {
     private Button saveButton;
 
 
-
+    /**
+     * Create Edit text dynamical creates the edit texts for the Data Fragment Class (Ryan Berg)
+     *
+     */
     private void createEditText() {
         data_text_input = new EditText(this.getContext());
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -75,8 +73,13 @@ public class DataFragment extends Fragment {
         data_text_input.setWidth(250);
         data_text_input.setLayoutParams(params);
         drlayout.addView(data_text_input);
+        //Todo: create Listener to add to database when input.
     }
 
+    /**
+     * createRadioGroup takes in an arraylist of strings and uses thos as the tags for a radioButtonGroup
+     * @param options
+     */
     public void createRadioGroup(ArrayList<String> options) {
         RelativeLayout.LayoutParams  params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.BELOW, R.id.data_item_names);
@@ -91,8 +94,13 @@ public class DataFragment extends Fragment {
 
         data_radio_group.setGravity(Gravity.CENTER_HORIZONTAL);
         drlayout.addView(data_radio_group);
+        //Todo: create Listener to add to database when input.
     }
 
+    /**
+     * createCheckBoxGroup takes in an arraylist of strings and uses thos as the tags for a radioButtonGroup
+     * @param options
+     */
     public void createCheckboxGroup(ArrayList<String> options) {
         dllayout.setVisibility(getView().VISIBLE);
         for(int i = 0; i < options.size(); i++) {
@@ -102,21 +110,25 @@ public class DataFragment extends Fragment {
             data_box.setText(options.get(i));
             dllayout.addView(data_box, params);
         }
+        //Todo: create Listener to add to database when input.
     }
 
 
-
+    /**
+     * loads the templates from the databases and finds the one that is selected during selectstudy
+     * @param listener
+     */
     public void loadTemplatesFromDB(ChildEventListener listener) {
 
         db = DBconn.getInstance().getFbConnection().child("Templates");
-        //final ArrayList<StudyTemplate> template = new ArrayList<StudyTemplate>();
-
         Query queryRef = db.orderByChild("name");
         queryRef.addChildEventListener(listener);
     }
 
     @Override
-
+    /**
+     * Ocreate starts the method
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.data_fragment, container, false);
 
@@ -140,6 +152,8 @@ public class DataFragment extends Fragment {
 
         /**
          * loades Templates from the Database and stores them in StudyTemplate ArrayList
+         *
+
          */
         loadTemplatesFromDB(new ChildEventListener() {
             @Override
@@ -162,6 +176,10 @@ public class DataFragment extends Fragment {
 
                         }
                     }
+
+                    /**
+                     * This should be refactored into a method if time permits.. it is used multiple times
+                     */
                     if (ItemInput != (null)) {
                         if (ItemInput.equals("TEXT")) {
                             drlayout.removeView(data_text_input);
@@ -169,10 +187,8 @@ public class DataFragment extends Fragment {
                             createEditText();
                             dllayout.removeAllViews();
                             dllayout.setVisibility(getView().GONE);
-                            System.out.println("Tempnum 0");
 
                         } else if (ItemInput.equals("RADIOBUTTONS")) {
-                            System.out.println("Tempnum 1");
                             data_radio_group.removeAllViews();
                             if (DC_items != null) {
                                 createRadioGroup(DC_items);
@@ -181,7 +197,7 @@ public class DataFragment extends Fragment {
                             dllayout.setVisibility(getView().GONE);
                             data_text_input.setVisibility(view.GONE);
                         } else if (ItemInput.equals("CHECKBOXES")) {
-                            System.out.println("Tempnum 2");
+                            dllayout.removeAllViews();
                             data_radio_group.removeAllViews();
                             if (DC_items != null) {
                                 createCheckboxGroup(DC_items);
@@ -228,6 +244,17 @@ public class DataFragment extends Fragment {
                 return true;
             }
 
+            /**
+             *
+             * @param e1
+             * @param e2
+             * @param velocityX
+             * @param velocityY
+             * @return
+             *
+             * Found this swipe motion online.. credit to stackOverflow (Ryan Berg)
+             * there are some nice templates for this online as well.
+             */
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                    float velocityY) {
                 final int SWIPE_MIN_DISTANCE = 120;
@@ -239,7 +266,7 @@ public class DataFragment extends Fragment {
                     }
                     if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
                             && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                        if(currentField < (datafields.size() - 1)){
+                        if(currentField < datafields.size()){
                             currentField++;
                             System.out.println("woot" + currentField);
                             ItemInput = String.valueOf(datafields.get(currentField).getItemInput());
@@ -253,11 +280,9 @@ public class DataFragment extends Fragment {
                                 createEditText();
                                 dllayout.removeAllViews();
                                 dllayout.setVisibility(getView().GONE);
-                                System.out.println("Tempnum 0");
 
                             }
                             else if(ItemInput.equals("RADIOBUTTONS")) {
-                                System.out.println("Tempnum 1");
                                 if(DC_items != null) {
                                     createRadioGroup(DC_items);
                                 }
@@ -266,7 +291,6 @@ public class DataFragment extends Fragment {
                                 data_text_input.setVisibility(view.GONE);
                             }
                             else if(ItemInput.equals("CHECKBOXES")) {
-                                System.out.println("Tempnum 2");
                                 dllayout.removeAllViews();
                                 data_radio_group.removeAllViews();
                                 if(DC_items != null) {
@@ -286,18 +310,16 @@ public class DataFragment extends Fragment {
                             dataitemname = datafields.get(currentField).getItemName();
                             DC_items = new ArrayList<String>(data_item_list.keySet());
                             data_item_name.setText(dataitemname);
-                            System.out.println("woot " + currentField);
+                            System.out.println("woot " + currentField); //Testing
                             if(ItemInput.equals("TEXT")) {
                                 drlayout.removeView(data_text_input);
                                 data_radio_group.removeAllViews();
                                 createEditText();
                                 dllayout.removeAllViews();
                                 dllayout.setVisibility(getView().GONE);
-                                System.out.println("Tempnum 0");
 
                             }
                             else if(ItemInput.equals("RADIOBUTTONS")) {
-                                System.out.println("Tempnum 1");
                                 dllayout.removeAllViews();
                                 if(DC_items != null) {
                                     createRadioGroup(DC_items);
@@ -306,7 +328,7 @@ public class DataFragment extends Fragment {
                                 data_text_input.setVisibility(view.GONE);
                             }
                             else if(ItemInput.equals("CHECKBOXES")) {
-                                System.out.println("Tempnum 2");
+                                dllayout.removeAllViews();
                                 data_radio_group.removeAllViews();
                                 if(DC_items != null) {
                                     createCheckboxGroup(DC_items);

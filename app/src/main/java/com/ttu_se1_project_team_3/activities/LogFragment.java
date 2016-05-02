@@ -2,17 +2,15 @@ package com.ttu_se1_project_team_3.activities;
 
 /**
  * Created by ryanberg on 4/19/16.
- * This Class should likely be refactored and broken into a few.
+ * This Class should likely be refactored and broken into a few. (Ryan Berg)
  * Isaac gonna be mad
  */
 
-import android.app.ActionBar;
+
+//soooo many
 import android.app.ActionBar.LayoutParams;
-import android.content.ClipData;
-import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -26,15 +24,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.ttu_se1_project_team_3.R;
-import com.ttu_se1_project_team_3.model.SessionDataField;
 import com.ttu_se1_project_team_3.model.SessionLogField;
 import com.ttu_se1_project_team_3.model.StudyTemplate;
 import java.util.ArrayList;
@@ -71,10 +66,12 @@ public class LogFragment extends Fragment {
         Log_Input.setWidth(250);
         Log_Input.setLayoutParams(params);
         rlayout.addView(Log_Input);
+        //Todo: create Listener to add to database when input.
     }
 
     /**
      * Creates the new RadioGroup based on the Input Type of current LogItem
+     * @param options
      */
     public void createRadioGroup(ArrayList<String> options) {
         RelativeLayout.LayoutParams  params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -89,6 +86,7 @@ public class LogFragment extends Fragment {
         }
         group.setGravity(Gravity.CENTER_HORIZONTAL);
         rlayout.addView(group);
+        //Todo: create Listener to add to database when input.
 
     }
 
@@ -104,15 +102,14 @@ public class LogFragment extends Fragment {
             Log_Box.setText(options.get(i));
             llayout.addView(Log_Box, params);
         }
-
-
+        //Todo: create Listener to add to database when input.
     }
+
+
 
     public void loadTemplatesFromDB(ChildEventListener listener) {
 
         db = DBconn.getInstance().getFbConnection().child("Templates");
-        //final ArrayList<StudyTemplate> template = new ArrayList<StudyTemplate>();
-
         Query queryRef = db.orderByChild("name");
         queryRef.addChildEventListener(listener);
     }
@@ -167,24 +164,23 @@ public class LogFragment extends Fragment {
 
                         /**
                          * Inital input of
+                         * Again this should be made a function.. it is usued multipel times (Ryan Berg)
                          */
                     if (ItemInput != null) {
                         if (ItemInput.equals("TEXT")) {
                             rlayout.removeView(Log_Input);
                             createEditText();
-                            System.out.println("Tempnum 0");
                             group.removeAllViews();
                             llayout.removeAllViews();
                             llayout.setVisibility(getView().GONE);
                         } else if (ItemInput.equals("RADIOBUTTONS")) {
-                            System.out.println("Tempnum 1");
                             llayout.removeAllViews();
                             if(RC_items != null) {
                                 createRadioGroup(RC_items);
                             }
                             Log_Input.setVisibility(view.GONE);
                         } else if (ItemInput.equals("CHECKBOXES")) {
-                            System.out.println("Tempnum 2");
+                            llayout.removeAllViews();
                             group.removeAllViews();
                             if(RC_items != null) {
                                 createCheckboxGroup(RC_items);
@@ -245,6 +241,9 @@ public class LogFragment extends Fragment {
              * @param velocityX
              * @param velocityY
              * @return detects left and right gestures
+             *
+             *
+             * Found this swipe motion online.. credit to stackOverflow (Ryan Berg)
              */
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                    float velocityY) {
@@ -258,7 +257,7 @@ public class LogFragment extends Fragment {
                     }
                     if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
                             && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                        if(currentField < logfields.size() - 1){
+                        if(currentField < logfields.size()){
                             currentField++;
                             LogName.setText(logfields.get(currentField).getItemName());
                             ItemInput = String.valueOf(logfields.get(currentField).getItemInput());
@@ -271,11 +270,10 @@ public class LogFragment extends Fragment {
                                 createEditText();
                                 llayout.removeAllViews();
                                 llayout.setVisibility(getView().GONE);
-                                System.out.println("Tempnum 0");
+
 
                             }
                             else if(ItemInput.equals("RADIOBUTTONS")) {
-                                System.out.println("Tempnum 1");
                                 if(RC_items != null) {
                                     createRadioGroup(RC_items);
                                 }
@@ -284,7 +282,7 @@ public class LogFragment extends Fragment {
                                 Log_Input.setVisibility(view.GONE);
                             }
                             else if(ItemInput.equals("CHECKBOXES")) {
-                                System.out.println("Tempnum 2");
+                                llayout.removeAllViews();
                                 group.removeAllViews();
                                 if(RC_items != null) {
                                     createCheckboxGroup(RC_items);
@@ -306,13 +304,11 @@ public class LogFragment extends Fragment {
                             if(ItemInput.equals("TEXT")) {
                                 rlayout.removeView(Log_Input);
                                 createEditText();
-                                System.out.println("Tempnum 0");
                                 group.removeAllViews();
                                 llayout.removeAllViews();
                                 llayout.setVisibility(getView().GONE);
                             }
                             else if(ItemInput.equals("RADIOBUTTONS")) {
-                                System.out.println("Tempnum 1");
                                 llayout.removeAllViews();
                                 if(RC_items != null) {
                                     createRadioGroup(RC_items);
@@ -320,7 +316,7 @@ public class LogFragment extends Fragment {
                                 Log_Input.setVisibility(view.GONE);
                             }
                             else if(ItemInput.equals("CHECKBOXES")) {
-                                System.out.println("Tempnum 2");
+                                llayout.removeAllViews();
                                 group.removeAllViews();
                                 if(RC_items != null) {
                                     createCheckboxGroup(RC_items);
