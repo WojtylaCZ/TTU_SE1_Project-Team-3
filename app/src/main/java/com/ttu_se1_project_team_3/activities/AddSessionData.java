@@ -65,6 +65,8 @@ public class AddSessionData extends AppCompatActivity {
     }
 
     public void addSessionDataField(View v) {
+        View b = findViewById(R.id.next); //the next button is invisible until the user presses the Add Session Log button
+        b.setVisibility(View.VISIBLE);
         String inputType = spinner.getSelectedItem().toString();
         String inputName = dataName.getText().toString();
         HashMap<String,String> content = new HashMap<>();
@@ -86,6 +88,11 @@ public class AddSessionData extends AppCompatActivity {
             Toast.makeText(AddSessionData.this, "You've added a Session Data Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionData.this, "That field name already exists.", Toast.LENGTH_LONG).show();
+        //Following 4 lines clear out the text boxes
+        EditText et=(EditText) findViewById(R.id.session_data_name);
+        et.setText("");
+        EditText eta=(EditText) findViewById(R.id.session_data_content);
+        eta.setText("");
     }
 
     public void save(View v) {
@@ -95,7 +102,10 @@ public class AddSessionData extends AppCompatActivity {
         Firebase newTemplateRef = templatesRef.push();
         newTemplateRef.setValue(studyTemplate);
         String postKey = newTemplateRef.getKey();
-        Toast.makeText(AddSessionData.this, postKey, Toast.LENGTH_LONG).show();
+        //Toast.makeText(AddSessionData.this, postKey, Toast.LENGTH_LONG).show();
+        //^Commented this out because it was toasting a "random" string of characters on the screen, confusing the user and has no real use
+        Intent Homepage = new Intent(this, Homepage.class); //Returns the user back to the homepage screen after pressing save study
+        startActivity(Homepage);
     }
 
     public void back(View v) {
