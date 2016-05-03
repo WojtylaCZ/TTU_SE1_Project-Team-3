@@ -3,9 +3,9 @@ package com.ttu_se1_project_team_3.model_tests;
 import com.ttu_se1_project_team_3.model.FormItem;
 import com.ttu_se1_project_team_3.model.InputT;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
@@ -16,22 +16,61 @@ import static org.junit.Assert.*;
  */
 public class FormItemTests {
 
-    ArrayList<String> stringChecks = new ArrayList<>();
     FormItem formItem = new FormItem();
-    Boolean testsSetup = false;
 
-    @Test
-    public void setItemName_checkList() throws Exception {
-        setupTests();
-        for (String item : stringChecks) {
-            formItem.setItemName(item);
-            assertEquals(item, formItem.getItemName());
-        }
+    @Before
+    public void clearTest() throws Exception {
+        formItem.setItemName("");
+        formItem.setItemInput(InputT.TEXT);
+        HashMap<String, String> hashMap = new HashMap<>();
+        formItem.setItemValues(hashMap);
     }
 
     @Test
-    public void setInputType_check() throws Exception {
+    public void setItemName_empty() throws Exception {
+        formItem.setItemName("");
+        assertEquals("", formItem.getItemName());
+    }
+
+    @Test
+    public void setItemName_nums() throws Exception {
+        formItem.setItemName("1s22a");
+        assertEquals("1s22a", formItem.getItemName());
+    }
+
+    @Test
+    public void setItemName_chars() throws Exception {
+        formItem.setItemName("jelly");
+        assertEquals("jelly", formItem.getItemName());
+    }
+
+    @Test
+    public void setItemName_null() throws Exception {
+        formItem.setItemName(null);
+        assertEquals("", formItem.getItemName());
+    }
+
+    @Test
+    public void setInputType_text() throws Exception {
         formItem.setItemInput(InputT.TEXT);
+        assertEquals(InputT.TEXT, formItem.getItemInput());
+    }
+
+    @Test
+    public void setInputType_radio() throws Exception {
+        formItem.setItemInput(InputT.RADIOBUTTONS);
+        assertEquals(InputT.RADIOBUTTONS, formItem.getItemInput());
+    }
+
+    @Test
+    public void setInputType_checkboxes() throws Exception {
+        formItem.setItemInput(InputT.CHECKBOXES);
+        assertEquals(InputT.CHECKBOXES, formItem.getItemInput());
+    }
+
+    @Test
+    public void setInputType_null() throws Exception {
+        formItem.setItemInput(null);
         assertEquals(InputT.TEXT, formItem.getItemInput());
     }
 
@@ -43,7 +82,7 @@ public class FormItemTests {
     }
 
     @Test
-    public void setItemValues_check() throws Exception {
+    public void setItemValues_filled() throws Exception {
         HashMap<String, String> values = new HashMap<>();
         values.put("check", "check");
         values.put("these", "these");
@@ -53,12 +92,11 @@ public class FormItemTests {
         assertEquals(values, formItem.getItemValues());
     }
 
-    private void setupTests() {
-        if (!testsSetup) {
-            stringChecks.add("");
-            stringChecks.add("words");
-            stringChecks.add("121d12eZZZ");
-            testsSetup = true;
-        }
+    @Test
+    public void setItemValues_null() throws Exception {
+        HashMap<String, String> value = new HashMap<>();
+        HashMap<String, String> values = null;
+        formItem.setItemValues(values);
+        assertEquals(value, formItem.getItemValues());
     }
 }

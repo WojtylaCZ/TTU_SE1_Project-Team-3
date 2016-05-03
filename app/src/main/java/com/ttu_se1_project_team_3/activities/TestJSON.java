@@ -83,6 +83,7 @@ public class TestJSON extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 StudyTemplate studyTemplate = snapshot.getValue(StudyTemplate.class);
+
                 System.out.print(snapshot.getKey() + " is template with: ");
                 System.out.println("Name: " + studyTemplate.getName());
                 System.out.println("SessionLogFields: " + studyTemplate.getSessionLogFields());

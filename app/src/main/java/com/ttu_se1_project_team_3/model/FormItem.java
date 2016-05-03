@@ -1,6 +1,5 @@
 package com.ttu_se1_project_team_3.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -14,30 +13,31 @@ import java.util.HashMap;
  */
 public class FormItem {
 
+    public String inputStyle;
     public String itemName;
     public InputT itemInput;
     public HashMap<String,String> itemValues;
 
-    public FormItem() {
-        this.itemName = null;
-        this.itemInput = null;
-        this.itemValues = null;
-    }
+    public FormItem() {}
 
     public String getItemName() {
         return itemName;
     }
 
     public void setItemName(String name) {
-        itemName = name;
+        if(name != null)
+            itemName = name;
     }
+
+    public void setItemIn(String input) {inputStyle = input; }
 
     public InputT getItemInput() {
         return itemInput;
     }
 
     public void setItemInput(InputT input) {
-        itemInput = input;
+        if(input != null)
+            itemInput = input;
     }
 
     public HashMap<String, String> getItemValues() {
@@ -45,7 +45,8 @@ public class FormItem {
     }
 
     public void setItemValues(HashMap<String, String> values) {
-        itemValues = values;
+        if(values != null)
+            itemValues = values;
     }
 
     public static InputT getInputT(String input) {
