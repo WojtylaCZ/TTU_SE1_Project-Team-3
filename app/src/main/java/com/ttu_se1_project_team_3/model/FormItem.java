@@ -31,7 +31,8 @@ public class FormItem {
     }
 
     public void setItemName(String name) {
-        itemName = name;
+        if(name != null)
+            itemName = name;
     }
 
     public void setInputStyle(String input) {inputStyle = input; }
@@ -41,7 +42,8 @@ public class FormItem {
     }
 
     public void setItemInput(InputT input) {
-        itemInput = input;
+        if(input != null)
+            itemInput = input;
     }
 
     public HashMap<String, String> getItemValues() {
@@ -49,7 +51,8 @@ public class FormItem {
     }
 
     public void setItemValues(HashMap<String, String> values) {
-        itemValues = values;
+        if(values != null)
+            itemValues = values;
     }
 
     public static InputT getInputT(String input) {

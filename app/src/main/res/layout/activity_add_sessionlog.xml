@@ -18,7 +18,7 @@
         android:layout_height="@dimen/text_input_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:hint="@string/enter_name" />
+        android:hint="@string/enter_sessionlog_name" />
 
     <EditText
         android:id="@+id/session_log_content"
@@ -53,6 +53,7 @@
         android:layout_alignParentRight="true"
         android:onClick="next"
         android:text="@string/next_button"
+        android:visibility="invisible"
         />
 
     <Button
@@ -64,4 +65,15 @@
         android:layout_alignParentStart="true"
         android:onClick="back"
         android:text="@string/back_button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Hint: Use commas for Toggle Buttons and Checkboxes"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/session_log_content"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

@@ -29,6 +29,7 @@ public class SessionDataField extends FormItem {
     }
 
     public void setInputStyle(InputStyles style) {
-        inputStyle = style;
+        if(style != null)
+            inputStyle = style;
     }
 }
