@@ -67,7 +67,8 @@ public class AddSessionLog extends AppCompatActivity {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = logName.getText().toString();
         HashMap<String,String> content = new HashMap<>();
-
+        View b = findViewById(R.id.next); //the next button is invisible until the user presses the Add Session Log button
+        b.setVisibility(View.VISIBLE);
         if (logName.length() == 0 || logContent.length() == 0) {
             if (logName.length() == 0)
                 logName.setError("You must provide a name.");
@@ -85,6 +86,12 @@ public class AddSessionLog extends AppCompatActivity {
             Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionLog.this, "That field name already exists.", Toast.LENGTH_LONG).show();
+
+        //Following 4 lines clear out the text boxes
+        EditText et=(EditText) findViewById(R.id.session_log_name);
+        et.setText("");
+        EditText eta=(EditText) findViewById(R.id.session_log_content);
+        eta.setText("");
     }
 
     public void next(View v) {
