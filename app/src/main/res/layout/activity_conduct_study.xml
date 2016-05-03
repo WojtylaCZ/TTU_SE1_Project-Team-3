@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,20 +7,40 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ttu_se1_project_team_3.activities.ConductStudy">
+    tools:context="com.ttu_se1_project_team_3.activities.ConductStudy"
+    android:orientation="vertical"
+    android:weightSum="10">
 
-    <TextView
-        android:id="@+id/Conduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Conduct A Study"/>
+    <fragment
+        android:id="@+id/logfrag"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        class="com.ttu_se1_project_team_3.activities.LogFragment"
+        tools:layout="@layout/log_fragment"
+        android:layout_weight="5"
+    />
 
-    <TextView
-        android:id="@+id/studyName"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="what it do"/>
+    <fragment
+        android:id="@+id/datafrag"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        class="com.ttu_se1_project_team_3.activities.DataFragment"
+        tools:layout="@layout/data_fragment"
+        android:layout_weight="5"/>
 
-</RelativeLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/Conduct"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Conduct A Study"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/studyName"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="what it do"/>-->
+
+</LinearLayout>

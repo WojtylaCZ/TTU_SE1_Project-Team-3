@@ -53,7 +53,8 @@
             android:launchMode="singleInstance">
             JSON test activity
         </activity>
-        <activity android:name=".activities.ConductStudy">Conduct Study</activity>
+        <activity android:name=".activities.ConductStudy"
+            android:screenOrientation="portrait">Conduct Study</activity>
         <activity android:name=".activities.SelectStudy">Select Study</activity>
     </application>
 

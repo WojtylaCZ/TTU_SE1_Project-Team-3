@@ -21,12 +21,13 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.ttu_se1_project_team_3.R;
 
+import static com.ttu_se1_project_team_3.R.id.logfrag;
+
 
 public class SelectStudy extends AppCompatActivity implements OnItemSelectedListener{
 
     private Firebase ref;
     private ArrayList<String> templates = new ArrayList<String>();
-    private String selectedTemplateName;
     private String selectedTemplate;
     private Spinner items;
 
@@ -94,6 +95,12 @@ public class SelectStudy extends AppCompatActivity implements OnItemSelectedList
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selectedTemplate = items.getSelectedItem().toString();
+        Bundle bundle = new Bundle();
+        bundle.putString("selected", selectedTemplate);
+        LogFragment logfrag = new LogFragment();
+        logfrag.setArguments(bundle);
+        DataFragment datafragobj = new DataFragment();
+        datafragobj.setArguments(bundle);
         Toast.makeText(SelectStudy.this, selectedTemplate, Toast.LENGTH_LONG).show();
     }
 
@@ -101,4 +108,6 @@ public class SelectStudy extends AppCompatActivity implements OnItemSelectedList
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }

@@ -3,11 +3,9 @@ package com.ttu_se1_project_team_3.model_tests;
 import com.ttu_se1_project_team_3.model.FormItem;
 import com.ttu_se1_project_team_3.model.InputT;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
