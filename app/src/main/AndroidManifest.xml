@@ -17,45 +17,67 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Welcome">
+        <activity
+            android:name=".activities.Welcome"
+            android:screenOrientation="portrait">
             Welcome
         </activity>
-        <activity android:name=".activities.Login">
+        <activity
+            android:name=".activities.Login"
+            android:screenOrientation="portrait">
             Login
         </activity>
-        <activity android:name=".activities.Homepage">
+        <activity
+            android:name=".activities.Homepage"
+            android:screenOrientation="portrait">
             Homepage
         </activity>
-        <activity android:name=".activities.CreateStudyTemplate">
+        <activity
+            android:name=".activities.CreateStudyTemplate"
+            android:screenOrientation="portrait">
             Template Details
         </activity>
         <activity
             android:name=".activities.AddSessionLog"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
             Create SessionLog
         </activity>
         <activity
             android:name=".activities.AddSessionData"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
             Create SessionLog
         </activity>
-        <activity android:name=".activities.ForgotPassword">
+        <activity
+            android:name=".activities.ForgotPassword"
+            android:screenOrientation="portrait">
             Forgot Password
         </activity>
-        <activity android:name=".activities.CreateAccount">
+        <activity
+            android:name=".activities.CreateAccount"
+            android:screenOrientation="portrait">
             Create Account
         </activity>
-        <activity android:name = ".activities.ChangePassword">
+        <activity
+            android:name=".activities.ChangePassword"
+            android:screenOrientation="portrait">
             Change Password
         </activity>
         <activity
             android:name=".activities.TestJSON"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait">
             JSON test activity
         </activity>
-        <activity android:name=".activities.ConductStudy"
-            android:screenOrientation="portrait">Conduct Study</activity>
-        <activity android:name=".activities.SelectStudy">Select Study</activity>
+        <activity
+            android:name=".activities.ConductStudy"
+            android:screenOrientation="portrait">Conduct Study
+        </activity>
+        <activity
+            android:name=".activities.SelectStudy"
+            android:screenOrientation="portrait">Select Study
+        </activity>
     </application>
 
 </manifest>

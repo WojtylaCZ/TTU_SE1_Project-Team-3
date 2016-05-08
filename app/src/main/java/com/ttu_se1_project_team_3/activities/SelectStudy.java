@@ -23,11 +23,15 @@ import com.ttu_se1_project_team_3.R;
 
 import static com.ttu_se1_project_team_3.R.id.logfrag;
 
-
+/**
+ * Created by Ryan on 4/4/2016.
+ * This activity allows the user to select which study template they wish to use to
+ * conduct a study.
+ */
 public class SelectStudy extends AppCompatActivity implements OnItemSelectedListener{
 
     private Firebase ref;
-    private ArrayList<String> templates = new ArrayList<String>();
+    private ArrayList<String> templates = new ArrayList<>();
     private String selectedTemplate;
     private Spinner items;
 
@@ -51,7 +55,7 @@ public class SelectStudy extends AppCompatActivity implements OnItemSelectedList
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot templateSnap : dataSnapshot.getChildren()) {
                     Log.d("TemplateName", (String) templateSnap.child("name").getValue());
-                    templates.add((String) templateSnap.child("name").getValue().toString());
+                    templates.add(templateSnap.child("name").getValue().toString());
                 }
 
 
@@ -59,7 +63,7 @@ public class SelectStudy extends AppCompatActivity implements OnItemSelectedList
                  * Setting up the Spinners
                  *
                  */
-                ArrayAdapter<String> templateAdapter = new ArrayAdapter<String>(SelectStudy.this, android.R.layout.simple_spinner_dropdown_item, templates);
+                ArrayAdapter<String> templateAdapter = new ArrayAdapter<>(SelectStudy.this, android.R.layout.simple_spinner_dropdown_item, templates);
                 items = (Spinner) findViewById(R.id.nameSpinner);
                 if (items != null) {
                     items.setAdapter(templateAdapter);

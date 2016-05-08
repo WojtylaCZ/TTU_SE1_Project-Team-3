@@ -64,9 +64,12 @@ public class AddSessionData extends AppCompatActivity {
         this.studyTemplate = appState.getStudyTemplate();
     }
 
+    /**
+     * This function attempts to create a SessionDataField based on the values.
+     * The next button is only available upon being able to create a new field.
+     * @param v
+     */
     public void addSessionDataField(View v) {
-        View b = findViewById(R.id.next); //the next button is invisible until the user presses the Add Session Log button
-        b.setVisibility(View.VISIBLE);
         String inputType = spinner.getSelectedItem().toString();
         String inputName = dataName.getText().toString();
         HashMap<String,String> content = new HashMap<>();
@@ -81,6 +84,9 @@ public class AddSessionData extends AppCompatActivity {
             return;
         }
 
+        View b = findViewById(R.id.next); //the next button is invisible until the user presses the Add Session Log button
+        b.setVisibility(View.VISIBLE);
+
         if (inputType.compareTo("Text") != 0)
             content = studyTemplate.getInputOptions(dataContent.getText().toString());
 
@@ -88,11 +94,10 @@ public class AddSessionData extends AppCompatActivity {
             Toast.makeText(AddSessionData.this, "You've added a Session Data Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionData.this, "That field name already exists.", Toast.LENGTH_LONG).show();
+
         //Following 4 lines clear out the text boxes
-        EditText et=(EditText) findViewById(R.id.session_data_name);
-        et.setText("");
-        EditText eta=(EditText) findViewById(R.id.session_data_content);
-        eta.setText("");
+        dataContent.setText("");
+        dataName.setText("");
     }
 
     public void save(View v) {

@@ -35,6 +35,10 @@ public class CreateStudyTemplate extends AppCompatActivity {
         studyTemplate = appState.getStudyTemplate();
     }
 
+    /**
+     * Attempts to create a new StudyTemplate with the name given by the user.
+     * @param v
+     */
     public void createStudyTemplate(View v) {
         String name = text.getText().toString();
         if (name.matches("")) {

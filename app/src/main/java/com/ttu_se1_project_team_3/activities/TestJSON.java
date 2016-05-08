@@ -21,6 +21,10 @@ import com.ttu_se1_project_team_3.model.User;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Created by Vojtech on 3/26/2016.
+ * This activity allows us to quickly test to make sure that firebase and JSON are working.
+ */
 public class TestJSON extends AppCompatActivity {
     Firebase db;
 
