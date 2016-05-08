@@ -63,6 +63,11 @@ public class AddSessionLog extends AppCompatActivity {
         this.studyTemplate = appState.getStudyTemplate();
     }
 
+    /**
+     * This function attempts to create a SessionLogField based on the values.
+     * The next button is only available upon being able to create a new field.
+     * @param v
+     */
     public void addSessionLogField(View v) {
         String inputType = spinner.getSelectedItem().toString();
         String inputName = logName.getText().toString();
@@ -78,6 +83,9 @@ public class AddSessionLog extends AppCompatActivity {
             return;
         }
 
+        View b = findViewById(R.id.next); //the next button is invisible until the user presses the Add Session Log button
+        b.setVisibility(View.VISIBLE);
+
         if (inputType.compareTo("Text") != 0)
             content = studyTemplate.getInputOptions(logContent.getText().toString());
 
@@ -85,6 +93,10 @@ public class AddSessionLog extends AppCompatActivity {
             Toast.makeText(AddSessionLog.this, "You've added a Session Log Field.", Toast.LENGTH_LONG).show();
         else
             Toast.makeText(AddSessionLog.this, "That field name already exists.", Toast.LENGTH_LONG).show();
+
+        //Following 4 lines clear out the text boxes
+        logContent.setText("");
+        logName.setText("");
     }
 
     public void next(View v) {

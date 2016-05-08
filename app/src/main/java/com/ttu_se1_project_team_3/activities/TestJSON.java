@@ -26,6 +26,8 @@ import java.util.Random;
  * Created by Vojtech
  *
  * Helper class for db communication, examples of data upload and download
+ *
+ * This activity allows us to quickly test to make sure that firebase and JSON are working.
  */
 public class TestJSON extends AppCompatActivity {
     Firebase db;

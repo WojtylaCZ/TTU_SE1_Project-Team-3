@@ -13,7 +13,7 @@
         android:layout_height="@dimen/text_input_height"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:hint="@string/enter_name"/>
+        android:hint="@string/enter_sessiondata_name"/>
 
     <EditText
         android:id="@+id/session_data_content"
@@ -48,6 +48,7 @@
         android:layout_alignParentRight="true"
         android:onClick="save"
         android:text="Save Study"
+        android:visibility="invisible"
         />
 
     <Button
@@ -60,4 +61,13 @@
         android:onClick="back"
         android:text="@string/back_button"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/hint"
+        android:id="@+id/textView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
