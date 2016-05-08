@@ -21,6 +21,12 @@ import com.ttu_se1_project_team_3.model.User;
 import java.util.HashMap;
 import java.util.Random;
 
+
+/**
+ * Created by Vojtech
+ *
+ * Helper class for db communication, examples of data upload and download
+ */
 public class TestJSON extends AppCompatActivity {
     Firebase db;
 

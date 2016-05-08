@@ -10,6 +10,7 @@ import com.ttu_se1_project_team_3.R;
 import com.google.gson.*;
 
 /**
+ * Created by Isaac.
  * The MainActivity is redirecting to the Welcome Activity, this is done to separate
  * the roles of each activity more precisely.
  */

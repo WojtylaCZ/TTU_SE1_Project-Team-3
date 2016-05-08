@@ -21,7 +21,13 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.ttu_se1_project_team_3.R;
 
-
+/**
+ * Created by Ryan.
+ *
+ * This class allows to select study template which are available.
+ * It loads the templates from db and show them in spinner view.
+ * Selected study is used to conduct study.
+ */
 public class SelectStudy extends AppCompatActivity implements OnItemSelectedListener{
 
     private Firebase ref;
