@@ -58,7 +58,7 @@ public class CreateAccount extends AppCompatActivity {
 
                 @Override
                 public void onError(FirebaseError firebaseError) {
-                    Toast.makeText(CreateAccount.this, "ERROR. Account NOT created.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreateAccount.this, "Account NOT created. Try again.", Toast.LENGTH_LONG).show();
                     System.err.println(firebaseError.toString());
                 }
             });
