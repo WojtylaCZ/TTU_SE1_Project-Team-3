@@ -16,4 +16,5 @@
 #   public *;
 #}
 -keepattributes EnclosingMethod
+-keepattributes Exceptions, Signature, InnerClasses
 

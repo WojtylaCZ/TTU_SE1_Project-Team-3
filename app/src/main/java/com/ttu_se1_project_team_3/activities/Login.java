@@ -43,6 +43,9 @@ public class Login extends AppCompatActivity {
 
     //https://www.firebase.com/docs/android/guide/user-auth.html
     public void login(View v) {
+        Intent home = new Intent(Login.this, Homepage.class);
+        startActivity(home);
+        //return;
         db = DBconn.getInstance().getFbConnection();
 
         final String email = enter_email.getText().toString();
@@ -56,11 +59,11 @@ public class Login extends AppCompatActivity {
                 user.setEmail(email);
                 user.setFbUid(authData.getUid());
 
-                //VOJTA: I am not sure if we will need to use or not, but it is prepared here
+               // VOJTA: I am not sure if we will need to use or not, but it is prepared here
                 //https://www.firebase.com/docs/android/guide/user-auth.html#section-storing
-//                Map<String, String> map = new HashMap<String, String>();
-//                map.put("login", email);
-//                db.child("users").child(authData.getUid()).setValue(map);
+                Map<String, String> map = new HashMap<String, String>();
+                map.put("login", email);
+                db.child("users").child(authData.getUid()).setValue(map);
 
 
 

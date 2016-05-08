@@ -6,7 +6,6 @@ import com.ttu_se1_project_team_3.model.SessionLogField;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import static org.junit.Assert.*;
 

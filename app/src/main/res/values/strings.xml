@@ -40,4 +40,7 @@
     <!--Create Account-->
     <string name="submit_createAccount">Create Account</string>
     <string name="title_activity_conduct_study">ConductStudy</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
