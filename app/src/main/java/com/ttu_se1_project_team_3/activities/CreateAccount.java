@@ -14,6 +14,7 @@ import com.ttu_se1_project_team_3.R;
 import java.util.Map;
 
 /**
+ * Created by Vojtech on 3/3/2016.
  * This class manages the page that allows the user to create a new account given an email
  * and matching passwords.
  */
